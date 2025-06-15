@@ -37,7 +37,8 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        min-height: 100vh;
+        /* ใช้ 100dvh แทน 100vh เพื่อการแสดงผลที่ถูกต้องบน Mobile Browsers */
+        min-height: 100dvh; 
         margin: 0;
         background: linear-gradient(
           135deg,
@@ -46,7 +47,7 @@
         );
         font-family: var(--font-prompt);
         color: var(--text-color-light);
-        overflow: hidden;
+        overflow: hidden; /* ป้องกันการ Scroll */
         position: relative;
         animation: backgroundShift var(--animation-duration-bg) ease-in-out
           infinite alternate;
@@ -83,19 +84,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-around; /* กระจายองค์ประกอบให้เต็มพื้นที่ */
         flex-grow: 1;
         z-index: 10;
-        padding: 2.5rem 1.5rem;
+        padding: 1.5rem 1rem; /* ลด padding สำหรับมือถือ */
         box-sizing: border-box;
-        max-width: 90vw;
+        max-width: 95vw; /* ใช้พื้นที่ความกว้างมากขึ้น */
         width: 100%;
-        min-height: auto;
-        height: 100%;
+        /* กำหนดความสูงให้ยืดหยุ่นตามเนื้อหาแต่ไม่เกินหน้าจอ */
+        min-height: auto; 
+        height: auto; 
         position: relative;
         text-align: center;
       }
-
+      
       /* Crystal Heart */
       .heart-link {
         text-decoration: none;
@@ -213,7 +215,8 @@
         position: relative;
         width: 90%;
         max-width: 700px;
-        height: 60vh;
+        /* ปรับความสูงเป็น vh เพื่อให้สัมพันธ์กับความสูงของหน้าจอ */
+        height: 40dvh; /* ค่าเริ่มต้นสำหรับ Desktop/Tablet */
         max-height: 500px;
         margin-top: 2rem;
         border-radius: 25px;
@@ -367,8 +370,9 @@
         .heart-hint {
           font-size: 1rem;
         }
+        /* ปรับความสูงของ slideshow สำหรับ Tablets */
         .photo-gallery-slideshow {
-          height: 70vw;
+          height: 50dvh; 
           max-height: 450px;
         }
         .gallery-slide-caption {
@@ -386,19 +390,21 @@
 
       @media (max-width: 768px) {
         body {
+          /* ใช้ 100dvh แทน 100vh เพื่อการแสดงผลที่ถูกต้องบน Mobile Browsers */
+          min-height: 100dvh; 
           align-items: center;
-          padding: 1.5rem 0;
-          overflow-y: auto;
+          padding: 1rem 0; /* ลด padding แนวตั้ง */
+          overflow-y: hidden; /* ป้องกันการ Scroll */
           overflow-x: hidden;
-          min-height: 100vh;
           justify-content: space-between;
         }
         .main-container {
-          padding: 1.5rem 1rem;
+          padding: 1rem 0.5rem; /* ลด padding ให้เหมาะสมกับมือถือ */
           min-height: auto;
-          max-width: 95vw;
+          max-width: 98vw; /* ใช้พื้นที่ความกว้างมากขึ้น */
           height: auto;
-          flex-grow: 0;
+          flex-grow: 1; /* ให้ main-container ยืดหยุ่นได้เต็มที่ */
+          justify-content: space-around; /* กระจายองค์ประกอบให้เต็มพื้นที่ */
         }
         .heart {
           font-size: clamp(4em, 8vw, 6em);
@@ -412,10 +418,11 @@
           font-size: 0.9rem;
           margin-top: 0.3rem;
         }
+        /* ปรับความสูงของ slideshow สำหรับ Mobile */
         .photo-gallery-slideshow {
-          height: 80vw;
+          height: 55dvh; /* ใช้ dvh ให้สัมพันธ์กับความสูงหน้าจอที่เหลือ */
           max-height: 400px;
-          margin-top: 1.5rem;
+          margin-top: 1rem; /* ลด margin */
           border-radius: 20px;
         }
         .gallery-slide-caption {
@@ -424,12 +431,13 @@
         }
         .floating-message {
           font-size: clamp(1em, 3vw, 2em);
-          margin-top: 1.5rem;
+          margin-top: 1rem; /* ลด margin */
+          height: 1.2em; /* ลดความสูงของ floating message เพื่อประหยัดพื้นที่ */
         }
         .footer-text {
-            font-size: clamp(0.5rem, 1.5vw, 0.65rem); /* Adjusted font size for mobile */
-            margin-top: 0.5rem; /* Adjusted margin for mobile */
-            margin-bottom: 0.3rem; /* Adjusted margin for mobile */
+            font-size: clamp(0.5rem, 1.5vw, 0.65rem); 
+            margin-top: 0.5rem; 
+            margin-bottom: 0.3rem; 
         }
         .particle {
             width: var(--particle-size-min);
@@ -438,7 +446,7 @@
             animation-duration: 25s;
         }
         .particle:nth-child(2n) {
-            display: none;
+            display: none; /* ลดจำนวน particles บนมือถือ */
         }
       }
 
@@ -449,10 +457,11 @@
         .heart-hint {
           font-size: 0.8rem;
         }
+        /* ปรับความสูงของ slideshow สำหรับมือถือจอเล็ก */
         .photo-gallery-slideshow {
-          height: 90vw;
+          height: 50dvh; /* ปรับอีกครั้งสำหรับจอเล็ก */
           max-height: 350px;
-          margin-top: 1rem;
+          margin-top: 0.8rem; /* ลด margin อีก */
         }
         .gallery-slide-caption {
           font-size: 0.9rem;
@@ -460,12 +469,13 @@
         }
         .floating-message {
           font-size: clamp(0.8em, 2.5vw, 1.5em);
-          margin-top: 1rem;
+          margin-top: 0.8rem; /* ลด margin อีก */
+          height: 1em; /* ลดความสูงของ floating message อีก */
         }
         .footer-text {
-            font-size: clamp(0.4rem, 1.3vw, 0.55rem); /* Adjusted font size for smaller mobile */
-            margin-top: 0.4rem; /* Adjusted margin for smaller mobile */
-            margin-bottom: 0.2rem; /* Adjusted margin for smaller mobile */
+            font-size: clamp(0.4rem, 1.3vw, 0.55rem); 
+            margin-top: 0.3rem; 
+            margin-bottom: 0.1rem; 
         }
       }
     </style>
@@ -488,13 +498,12 @@
       <div class="heart-hint">ลองกดตรงรูปหัวใจดูสิครับ</div>
 
       <div class="photo-gallery-slideshow" id="photoGallerySlideshow">
-        </div>
+      </div>
 
       <div class="floating-message">
         <span>Thinking of you, P'Tawan. You are my sunshine!</span>
       </div>
-
-      </div>
+    </div>
 
     <div class="footer-text">
       <p>**©** Copyright by thewin wonganann</p>
