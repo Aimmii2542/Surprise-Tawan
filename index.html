@@ -2,79 +2,121 @@
 <html lang="th">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Thinking of You ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thinking of You, P'Tawan ❤️</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&family=Prompt:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&family=Prompt:wght@400;700&family=Parisienne&display=swap"
       rel="stylesheet"
     />
     <style>
+      /* CSS Variables for easy customization */
+      :root {
+        --primary-gradient-start: #ff7e5f; /* Coral */
+        --primary-gradient-end: #feb47b; /* Peach */
+        --secondary-gradient-start: #ee9ca7; /* Pink Rose */
+        --secondary-gradient-end: #ffdde1; /* Light Pink */
+        --heart-color: #ff4d6d; /* Vibrant Pink-Red */
+        --heart-glow-1: #ff8fa3;
+        --heart-glow-2: #ffc2d1;
+        --text-color-light: #fff;
+        --text-color-dark: #333;
+        --font-mali: 'Mali', cursive;
+        --font-prompt: 'Prompt', sans-serif;
+        --font-parisienne: 'Parisienne', cursive;
+        --transition-speed: 0.5s;
+        --animation-duration-bg: 25s;
+        --animation-duration-heart: 1.8s;
+        --slideshow-fade-duration: 2s;
+        --slideshow-interval: 5000ms;
+        --particle-size-min: 2px;
+        --particle-size-max: 6px;
+      }
+
       body {
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh; /* เดิม */
+        min-height: 100vh;
         margin: 0;
-        background: linear-gradient(135deg, #ff9999, #ff66cc);
-        font-family: 'Prompt', sans-serif;
-        color: #fff;
-        overflow: hidden; /* เดิม */
+        background: linear-gradient(
+          135deg,
+          var(--primary-gradient-start),
+          var(--primary-gradient-end)
+        );
+        font-family: var(--font-prompt);
+        color: var(--text-color-light);
+        overflow: hidden; /* Hide main scrollbar */
         position: relative;
-        animation: backgroundShift 20s ease-in-out infinite alternate;
+        animation: backgroundShift var(--animation-duration-bg) ease-in-out
+          infinite alternate;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        perspective: 1000px; /* For parallax */
       }
+
       @keyframes backgroundShift {
         0% {
-          background: linear-gradient(135deg, #ff9999, #ff66cc);
+          background: linear-gradient(
+            135deg,
+            var(--primary-gradient-start),
+            var(--primary-gradient-end)
+          );
         }
         50% {
-          background: linear-gradient(135deg, #ff66cc, #ff9999);
+          background: linear-gradient(
+            -135deg,
+            var(--secondary-gradient-start),
+            var(--secondary-gradient-end)
+          );
         }
         100% {
-          background: linear-gradient(135deg, #ff9999, #ff66cc);
+          background: linear-gradient(
+            135deg,
+            var(--primary-gradient-start),
+            var(--primary-gradient-end)
+          );
         }
       }
 
-      .heart-container {
+      .main-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         z-index: 10;
-        padding: 30px; /* เดิม */
+        padding: 3rem 1.5rem; /* Responsive padding */
         box-sizing: border-box;
-        max-width: 95%; /* เดิม */
-        min-height: 80vh; /* เดิม */
+        max-width: 90vw; /* Use viewport width */
+        width: 100%;
+        min-height: 80vh; /* Adjust for content, might be auto on mobile */
         position: relative;
-        /* เพิ่ม: ทำให้เนื้อหาบีบตัวได้ถ้าจำเป็น */
-        flex-shrink: 0;
+        text-align: center;
       }
 
-      /* ลิงก์หัวใจ */
+      /* Crystal Heart */
       .heart-link {
         text-decoration: none;
         display: inline-block;
         cursor: pointer;
-        filter: none;
-        user-select: none;
+        filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.5));
         position: relative;
         z-index: 20;
+        transition: transform var(--transition-speed) ease-out;
       }
 
-      /* หัวใจหลัก */
       .heart {
-        font-size: 10em; /* เดิม */
-        color: #ff2a68;
-        animation: pulseGlow 1.5s ease-in-out infinite;
-        text-shadow: 0 0 8px #ff2a68, 0 0 20px #ff5a8f, 0 0 40px #ff2a68,
-          0 0 80px #ff5a8f;
-        transition: transform 0.3s ease, text-shadow 0.3s ease;
-        margin-bottom: 5px;
-        position: relative;
-        z-index: 20;
+        font-size: 10em; /* Base size */
+        color: var(--heart-color);
+        animation: pulseGlow var(--animation-duration-heart) ease-in-out infinite;
+        text-shadow: 0 0 15px var(--heart-glow-1), 0 0 30px var(--heart-glow-2),
+          0 0 60px var(--heart-glow-1), 0 0 100px var(--heart-glow-2);
+        transition: transform var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
         user-select: none;
+        position: relative;
+        will-change: transform, filter; /* Optimize for animation */
       }
 
-      /* shine effect รอบหัวใจ */
+      /* Crystal effect on heart */
       .heart::before {
         content: '';
         position: absolute;
@@ -86,410 +128,308 @@
         pointer-events: none;
         background: radial-gradient(
             circle at 30% 30%,
-            rgba(255, 255, 255, 0.6),
+            rgba(255, 255, 255, 0.8),
             transparent 60%
           ),
           radial-gradient(
             circle at 70% 70%,
-            rgba(255, 182, 193, 0.4),
+            rgba(255, 182, 193, 0.5),
             transparent 60%
           );
-        animation: shineRotate 4s linear infinite;
+        animation: shineRotate 6s linear infinite;
+        mix-blend-mode: screen; /* Blends light sources beautifully */
+        opacity: 0.8;
         z-index: -1;
+        transform-style: preserve-3d; /* For parallax */
       }
 
       @keyframes shineRotate {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
+        0% { transform: rotate(0deg) translateZ(0); }
+        100% { transform: rotate(360deg) translateZ(0); }
       }
 
       @keyframes pulseGlow {
-        0%,
-        100% {
+        0%, 100% {
           transform: scale(1);
-          text-shadow: 0 0 8px #ff2a68, 0 0 20px #ff5a8f, 0 0 40px #ff2a68,
-            0 0 80px #ff5a8f;
+          text-shadow: 0 0 10px var(--heart-glow-1), 0 0 25px var(--heart-glow-2),
+            0 0 50px var(--heart-glow-1), 0 0 90px var(--heart-glow-2);
         }
         50% {
-          transform: scale(1.12);
-          text-shadow: 0 0 15px #ff2a68, 0 0 35px #ff5a8f, 0 0 70px #ff2a68,
-            0 0 120px #ff5a8f;
+          transform: scale(1.15);
+          text-shadow: 0 0 20px var(--heart-glow-1), 0 0 40px var(--heart-glow-2),
+            0 0 80px var(--heart-glow-1), 0 0 140px var(--heart-glow-2);
         }
       }
 
-      /* hover ขยาย + หมุน */
+      /* Hover/Active Effects */
       .heart-link:hover .heart {
-        transform: scale(1.3) rotate(-7deg);
-        text-shadow: 0 0 25px #ff2a68, 0 0 50px #ff5a8f, 0 0 75px #ff2a68,
-          0 0 120px #ff5a8f;
+        transform: scale(1.25) rotate(-5deg);
+        filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.8));
+        text-shadow: 0 0 30px var(--heart-glow-1), 0 0 60px var(--heart-glow-2),
+          0 0 90px var(--heart-glow-1), 0 0 150px var(--heart-glow-2);
       }
 
-      /* คลิกประกาย sparkles */
       .heart-link:active .heart {
         animation: sparkleBurst 0.6s forwards;
       }
 
       @keyframes sparkleBurst {
         0% {
-          filter: drop-shadow(0 0 0 #fff);
-          transform: scale(1.3) rotate(-7deg);
-          text-shadow: 0 0 25px #ff2a68, 0 0 50px #ff5a8f, 0 0 75px #ff2a68,
-            0 0 120px #ff5a8f;
+          transform: scale(1.25) rotate(-5deg);
+          filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.8));
+          text-shadow: inherit;
         }
         50% {
-          filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 25px #ffc0cb)
-            drop-shadow(0 0 40px #fff);
-          transform: scale(1.5) rotate(-12deg);
-          text-shadow: 0 0 30px #ff2a68, 0 0 65px #ff5a8f, 0 0 100px #ff2a68,
-            0 0 150px #ff5a8f;
+          transform: scale(1.4) rotate(-10deg);
+          filter: drop-shadow(0 0 25px #fff) drop-shadow(0 0 50px #ffc0cb)
+            drop-shadow(0 0 80px #fff);
+          text-shadow: 0 0 40px #fff, 0 0 80px #ffc0cb, 0 0 120px #fff;
         }
         100% {
-          filter: drop-shadow(0 0 0 #fff);
-          transform: scale(1.3) rotate(-7deg);
-          text-shadow: 0 0 25px #ff2a68, 0 0 50px #ff5a8f, 0 0 75px #ff2a68,
-            0 0 120px #ff5a8f;
+          transform: scale(1.25) rotate(-5deg);
+          filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.8));
+          text-shadow: inherit;
         }
       }
 
-      /* ข้อความใต้หัวใจ */
+      /* Hint Text */
       .heart-hint {
-        font-family: 'Mali', cursive;
-        font-size: 1em; /* เดิม */
+        font-family: var(--font-mali);
+        font-size: 1.1rem;
         font-weight: 600;
-        color: #fff;
-        margin-top: 4px;
-        text-align: center;
-        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        color: var(--text-color-light);
+        margin-top: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         user-select: none;
         z-index: 15;
+        opacity: 0.8;
       }
 
-      /* Slideshow Container */
-      .image-slideshow {
+      /* Dynamic Photo Slideshow Gallery */
+      .photo-gallery-slideshow {
         position: relative;
-        width: 100%; /* เดิม */
-        max-width: 600px; /* เดิม */
-        height: 400px; /* เดิม */
-        margin-top: 40px; /* เดิม */
-        border-radius: 20px;
+        width: 90%; /* Responsive width */
+        max-width: 700px; /* Max width for larger screens */
+        height: 60vh; /* Responsive height based on viewport */
+        max-height: 500px; /* Max height for larger screens */
+        margin-top: 2rem;
+        border-radius: 25px;
         overflow: hidden;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 0 5px rgba(255, 255, 255, 0.3);
         background-color: rgba(255, 255, 255, 0.1);
         display: flex;
         justify-content: center;
         align-items: center;
+        transform-style: preserve-3d; /* For possible 3D effects */
+        will-change: transform, opacity;
       }
 
-      /* แต่ละสไลด์ */
-      .mySlides {
+      .gallery-slide {
         display: none;
+        position: absolute;
         width: 100%;
         height: 100%;
-        position: absolute;
         top: 0;
         left: 0;
         opacity: 0;
-        transition: opacity 1.5s ease-in-out;
-        display: flex;
+        transition: opacity var(--slideshow-fade-duration) ease-in-out;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 1rem;
+        box-sizing: border-box;
       }
 
-      /* รูปภาพภายในสไลด์ */
-      .mySlides img {
-        width: 90%;
-        max-height: 80%;
+      .gallery-slide img {
+        width: 95%; /* Image fills most of the slide */
+        max-height: 80%; /* Limit image height */
         object-fit: contain;
-        border-radius: 15px;
-        border: 4px solid rgba(255, 255, 255, 0.8);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        border-radius: 20px;
+        border: 5px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        will-change: transform;
       }
 
-      /* ข้อความใต้รูปภาพในสไลด์ (ถ้ามี) */
-      .slide-text {
-        font-family: 'Mali', cursive;
-        font-size: 1.5em; /* เดิม */
-        font-weight: 600;
-        color: #fff;
-        margin-top: 15px; /* เดิม */
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      .gallery-slide-caption {
+        font-family: var(--font-mali);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-color-light);
+        margin-top: 1rem;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
         text-align: center;
+        line-height: 1.4;
       }
 
-      /* แสดงสไลด์ปัจจุบัน */
-      .mySlides.active {
+      .gallery-slide.active {
         display: flex;
         opacity: 1;
       }
 
-      /* ข้อความวิ่ง */
-      .message-marquee {
-        font-family: 'Mali', cursive;
-        font-size: 2.5em; /* เดิม */
+      /* Floating Message */
+      .floating-message {
+        font-family: var(--font-parisienne); /* Elegant font */
+        font-size: 3.5em; /* Larger size for impact */
         font-weight: 700;
-        color: #fff;
-        margin-top: 20px; /* เดิม */
-        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        color: var(--text-color-light);
+        margin-top: 2.5rem;
+        text-shadow: 0 5px 10px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.3);
         white-space: nowrap;
         overflow: hidden;
+        position: relative;
+        width: 100%;
         box-sizing: border-box;
-        max-width: 100vw;
         user-select: none;
         z-index: 10;
       }
 
-      .message-marquee span {
+      .floating-message span {
         display: inline-block;
-        padding-left: 100vw;
-        animation: marquee 15s linear infinite;
+        padding-left: 100%; /* Start off-screen */
+        animation: floatAndFade 20s linear infinite; /* Longer animation */
+        position: absolute;
+        will-change: transform, opacity;
       }
 
-      @keyframes marquee {
+      @keyframes floatAndFade {
         0% {
-          transform: translateX(0);
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
         }
         100% {
           transform: translateX(-100%);
+          opacity: 0;
         }
       }
 
-      /* Particle effects (คงเดิม) */
+      /* Star Particles */
       .particle {
         position: absolute;
-        width: 8px;
-        height: 8px;
+        background: radial-gradient(
+          circle at center,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0.3)
+        );
         border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.7);
-        animation: twinkle 2s infinite, moveParticles 10s linear infinite;
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+        animation: twinkle 3s infinite ease-in-out alternate,
+          moveParticles 20s linear infinite;
+        opacity: 0; /* Start hidden */
         z-index: 5;
+        pointer-events: none; /* Do not block clicks */
+        will-change: transform, opacity;
       }
 
       @keyframes twinkle {
-        0%,
-        100% {
-          opacity: 0.5;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.3);
-        }
+        0%, 100% { opacity: 0.3; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.2); }
       }
 
       @keyframes moveParticles {
-        0% {
-          transform: translate(0, 0);
+        0% { transform: translate(var(--start-x), var(--start-y)); }
+        100% { transform: translate(var(--end-x), var(--end-y)); }
+      }
+
+      /* Individual Particle properties - generated by JS for variety */
+
+      /* ------------------------------------- */
+      /* Responsive Adjustments for Mobile & Tablets */
+      /* ------------------------------------- */
+      @media (max-width: 1024px) {
+        .heart {
+          font-size: 8em;
         }
-        100% {
-          transform: translate(100vw, 100vh);
+        .heart-hint {
+          font-size: 1rem;
+        }
+        .photo-gallery-slideshow {
+          height: 70vw;
+          max-height: 450px;
+        }
+        .gallery-slide-caption {
+          font-size: 1.1rem;
+        }
+        .floating-message {
+          font-size: 2.8em;
+          margin-top: 2rem;
         }
       }
 
-      /* ตำแหน่ง particle (คงเดิม) */
-      .particle:nth-child(1) {
-        top: 10%;
-        left: 15%;
-        animation-delay: 0.5s;
-        width: 8px;
-        height: 8px;
-      }
-      .particle:nth-child(2) {
-        top: 30%;
-        right: 10%;
-        animation-delay: 1s;
-        width: 10px;
-        height: 10px;
-      }
-      .particle:nth-child(3) {
-        bottom: 20%;
-        left: 25%;
-        animation-delay: 1.5s;
-        width: 7px;
-        height: 7px;
-      }
-      .particle:nth-child(4) {
-        top: 45%;
-        right: 30%;
-        animation-delay: 2s;
-        width: 9px;
-        height: 9px;
-      }
-      .particle:nth-child(5) {
-        bottom: 35%;
-        left: 5%;
-        animation-delay: 2.5s;
-        width: 12px;
-        height: 12px;
-      }
-      .particle:nth-child(6) {
-        top: 20%;
-        left: 40%;
-        animation-delay: 3s;
-        width: 6px;
-        height: 6px;
-      }
-      .particle:nth-child(7) {
-        bottom: 10%;
-        right: 15%;
-        animation-delay: 3.5s;
-        width: 11px;
-        height: 11px;
-      }
-      .particle:nth-child(8) {
-        top: 5%;
-        left: 55%;
-        animation-delay: 4s;
-        width: 8px;
-        height: 8px;
-      }
-      .particle:nth-child(9) {
-        bottom: 45%;
-        right: 25%;
-        animation-delay: 4.5s;
-        width: 7px;
-        height: 7px;
-      }
-      .particle:nth-child(10) {
-        top: 30%;
-        left: 10%;
-        animation-delay: 5s;
-        width: 10px;
-        height: 10px;
-      }
-      .particle:nth-child(11) {
-        top: 55%;
-        left: 5%;
-        animation-delay: 0.8s;
-        width: 9px;
-        height: 9px;
-      }
-      .particle:nth-child(12) {
-        top: 70%;
-        right: 20%;
-        animation-delay: 1.8s;
-        width: 6px;
-        height: 6px;
-      }
-      .particle:nth-child(13) {
-        bottom: 5%;
-        left: 60%;
-        animation-delay: 2.2s;
-        width: 10px;
-        height: 10px;
-      }
-      .particle:nth-child(14) {
-        top: 15%;
-        right: 5%;
-        animation-delay: 3.2s;
-        width: 7px;
-        height: 7px;
-      }
-      .particle:nth-child(15) {
-        bottom: 50%;
-        left: 40%;
-        animation-delay: 4.2s;
-        width: 8px;
-        height: 8px;
-      }
-
-      /* ------------------------------------- */
-      /* Responsive Adjustments for Mobile */
-      /* ------------------------------------- */
       @media (max-width: 768px) {
         body {
-          /* อนุญาตให้เลื่อนได้ในแนวตั้ง หากเนื้อหาเกินหน้าจอ */
-          overflow-y: auto;
-          overflow-x: hidden; /* ซ่อน scrollbar แนวนอน */
-          align-items: flex-start; /* จัดให้เนื้อหาอยู่ด้านบนสุด เพื่อเห็นทั้งหมด */
-          padding: 20px 0; /* เพิ่ม padding ด้านบน/ล่าง */
-          min-height: auto; /* ลบ min-height เพื่อให้เนื้อหาไหลได้ */
+          align-items: flex-start;
+          padding: 1.5rem 0;
+          overflow-y: auto; /* Allow scrolling on smaller screens if content overflows */
+          overflow-x: hidden;
         }
-
-        .heart-container {
-          padding: 20px 10px; /* ลด padding รอบคอนเทนเนอร์ */
-          min-height: auto; /* อนุญาตให้ความสูงปรับตามเนื้อหา */
-          max-width: 98%; /* ใช้พื้นที่หน้าจอมากขึ้น */
+        .main-container {
+          padding: 1.5rem 1rem;
+          min-height: auto;
+          max-width: 95vw;
         }
-
         .heart {
-          font-size: 6em; /* ลดขนาดหัวใจให้เล็กลงสำหรับมือถือ */
+          font-size: 6em; /* Smaller heart for mobile */
         }
-
-        .heart::before {
-          top: -10%;
-          left: -10%;
-          width: 120%;
-          height: 120%;
-        }
-
         .heart-link:hover .heart,
         .heart-link:active .heart {
-          transform: scale(1.1) rotate(-5deg); /* ปรับขนาดตอน hover/active ให้เล็กลง */
-          text-shadow: 0 0 15px #ff2a68, 0 0 30px #ff5a8f, 0 0 45px #ff2a68,
-            0 0 80px #ff5a8f;
+            transform: scale(1.1) rotate(-3deg);
+            text-shadow: 0 0 15px var(--heart-glow-1), 0 0 30px var(--heart-glow-2), 0 0 45px var(--heart-glow-1), 0 0 80px var(--heart-glow-2);
         }
-
         .heart-hint {
-          font-size: 0.85em; /* ลดขนาด font ของข้อความใต้หัวใจ */
-          margin-top: 2px;
+          font-size: 0.9rem;
+          margin-top: 0.3rem;
         }
-
-        .image-slideshow {
-          max-width: 90vw; /* ใช้ความกว้างของ viewport เป็นหลัก */
-          height: 60vw; /* ใช้ความกว้างของ viewport กำหนดความสูง เพื่อรักษาสัดส่วน */
-          margin-top: 20px; /* ลด margin-top */
-          border-radius: 15px;
+        .photo-gallery-slideshow {
+          height: 80vw; /* Make slideshow taller relative to width */
+          max-height: 400px;
+          margin-top: 1.5rem;
+          border-radius: 20px;
         }
-
-        .mySlides img {
-          width: 95%; /* ขยายรูปให้ใหญ่ขึ้นเล็กน้อย */
-          max-height: 75%;
-          border: 3px solid rgba(255, 255, 255, 0.8);
+        .gallery-slide-caption {
+          font-size: 1rem;
+          margin-top: 0.8rem;
         }
-
-        .slide-text {
-          font-size: 1em; /* ลดขนาด font ของข้อความสไลด์ */
-          margin-top: 10px;
+        .floating-message {
+          font-size: 2em;
+          margin-top: 1.5rem;
         }
-
-        .message-marquee {
-          font-size: 1.5em; /* ลดขนาด font ของข้อความวิ่งอย่างมาก */
-          margin-top: 15px;
-        }
-
-        /* ซ่อน particle บางตัวในมือถือเพื่อให้ดูสะอาดตาขึ้น (ทางเลือก) */
-        .particle:nth-child(odd) {
-          display: none;
-        }
-        /* หรือปรับขนาดและจำนวน particle ให้เล็กลง */
         .particle {
-            width: 5px;
-            height: 5px;
+            width: var(--particle-size-min); /* Use min size for particles */
+            height: var(--particle-size-min);
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            animation-duration: 25s; /* Slow down particle movement on mobile */
+        }
+        /* Hide some particles on very small screens to reduce clutter */
+        .particle:nth-child(2n) {
+            display: none;
         }
       }
 
       @media (max-width: 480px) {
-        /* สำหรับมือถือขนาดเล็กเป็นพิเศษ */
         .heart {
           font-size: 5em;
         }
         .heart-hint {
-          font-size: 0.8em;
+          font-size: 0.8rem;
         }
-        .image-slideshow {
-          height: 70vw; /* เพิ่มความสูงเล็กน้อยสำหรับมือถือที่แคบมาก */
+        .photo-gallery-slideshow {
+          height: 90vw; /* Even taller for very narrow screens */
+          max-height: 350px;
+          margin-top: 1rem;
         }
-        .slide-text {
-          font-size: 0.9em;
+        .gallery-slide-caption {
+          font-size: 0.9rem;
+          margin-top: 0.5rem;
         }
-        .message-marquee {
-          font-size: 1.2em;
+        .floating-message {
+          font-size: 1.5em;
+          margin-top: 1rem;
         }
       }
     </style>
@@ -500,7 +440,7 @@
       เบราว์เซอร์ของคุณไม่รองรับการเล่นไฟล์เสียง
     </audio>
 
-    <div class="heart-container">
+    <div class="main-container">
       <a
         href="https://www.instagram.com/thewin_wonganan?igsh=NWszY2hvd2Z3bGxz"
         target="_blank"
@@ -511,67 +451,60 @@
       </a>
       <div class="heart-hint">ลองกดตรงรูปหัวใจดูสิครับ</div>
 
-      <div class="image-slideshow" id="imageSlideshow">
+      <div class="photo-gallery-slideshow" id="photoGallerySlideshow">
         </div>
 
-      <div class="message-marquee">
-        <span>Thinking of you, P'Tawan.</span>
+      <div class="floating-message">
+        <span>Thinking of you, P'Tawan. You are my sunshine!</span>
       </div>
 
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
+      </div>
 
     <script>
-      // เล่นเพลงแบบ auto-play พร้อม fallback
+      // Background Music Autoplay
       document.addEventListener('DOMContentLoaded', function () {
-        var music = document.getElementById('background-music');
+        const music = document.getElementById('background-music');
+        music.volume = 0.6; // Set initial volume
         music.play().catch(function (error) {
           console.log('Autoplay was prevented. Attaching click listener.');
+          // Fallback for autoplay restrictions
           document.body.addEventListener(
             'click',
             function () {
               music.play();
             },
-            { once: true }
+            { once: true } // Only listen for one click
           );
         });
       });
 
-      // Auto slide รูปภาพแบบ Fade-in/Fade-out
+      // Photo Gallery Slideshow Logic
       (function () {
         const slidesData = [
-          { src: 'Tawan1.jpg', alt: 'Tawan 1', text: 'ยิ้มสดใสในวันแรก' },
-          { src: 'Tawan2.jpg', alt: 'Tawan 2', text: 'มุมเผล ๆ ที่น่ารัก' },
-          { src: 'Tawan3.jpg', alt: 'Tawan 3', text: 'บรรยากาศสบายๆ' },
-          { src: 'Tawan4.jpg', alt: 'Tawan 4', text: 'ความสุขเล็กๆ' },
-          { src: 'Tawan5.jpg', alt: 'Tawan 5', text: 'หล่อเท่ในทุกมุม' },
-          
-          // สามารถเพิ่มรูปภาพและข้อความได้อีกตามต้องการ
+          { src: 'Tawan1.jpg', alt: 'Tawan 1', caption: 'ยิ้มสดใสในวันแรก' },
+          { src: 'Tawan2.jpg', alt: 'Tawan 2', caption: 'มุมเผลอ ๆ ที่น่ารัก' },
+          { src: 'Tawan3.jpg', alt: 'Tawan 3', caption: 'บรรยากาศสบายๆ' },
+          { src: 'Tawan4.jpg', alt: 'Tawan 4', caption: 'ความสุขเล็กๆ น้อยๆ ของเรา' },
+          { src: 'Tawan5.jpg', alt: 'Tawan 5', caption: 'หล่อเท่ในทุกมุมเสมอ' },
+          { src: 'Tawan6.jpg', alt: 'Tawan 6', caption: 'คิดถึงนะค้าบบ' },
+          { src: 'Tawan7.jpg', alt: 'Tawan 7', caption: 'แค่เห็นก็ใจละลายแล้ว' },
+          { src: 'Tawan8.jpg', alt: 'Tawan 8', caption: 'ความทรงจำดีๆ ที่เรามีร่วมกัน' },
+          { src: 'Tawan9.jpg', alt: 'Tawan 9', caption: 'เสน่ห์ที่ไม่เหมือนใครของพี่' },
+          { src: 'Tawan10.jpg', alt: 'Tawan 10', caption: 'อยากเจอทุกวันเลย' },
+          { src: 'Tawan11.jpg', alt: 'Tawan 11', caption: 'รอยยิ้มนี้ทำให้โลกสดใส' },
+          { src: 'Tawan12.jpg', alt: 'Tawan 12', caption: 'รักพี่ตะวันที่สุด' },
+          // Add more images and captions here!
         ];
 
         let slideIndex = 0;
-        const slideshowContainer = document.getElementById('imageSlideshow');
+        const slideshowContainer = document.getElementById('photoGallerySlideshow');
 
-        // สร้างสไลด์จากข้อมูลใน slidesData
+        // Dynamically create slides
         slidesData.forEach((data, index) => {
           const slideDiv = document.createElement('div');
-          slideDiv.classList.add('mySlides', 'fade');
+          slideDiv.classList.add('gallery-slide');
           if (index === 0) {
-            slideDiv.classList.add('active');
+            slideDiv.classList.add('active'); // First slide is active initially
           }
 
           const img = document.createElement('img');
@@ -579,34 +512,67 @@
           img.alt = data.alt;
           slideDiv.appendChild(img);
 
-          if (data.text) {
-            const textDiv = document.createElement('div');
-            textDiv.classList.add('slide-text');
-            textDiv.textContent = data.text;
-            slideDiv.appendChild(textDiv);
+          if (data.caption) {
+            const captionDiv = document.createElement('div');
+            captionDiv.classList.add('gallery-slide-caption');
+            captionDiv.textContent = data.caption;
+            slideDiv.appendChild(captionDiv);
           }
           slideshowContainer.appendChild(slideDiv);
         });
 
-        const slides = document.querySelectorAll('.mySlides');
+        const slides = document.querySelectorAll('.gallery-slide');
 
         function showSlides() {
+          // Hide current slide
           slides[slideIndex].classList.remove('active');
 
-          slideIndex++;
-          if (slideIndex > slides.length - 1) {
-            slideIndex = 0;
-          }
+          // Move to next slide
+          slideIndex = (slideIndex + 1) % slides.length; // Loop back to start
 
+          // Show next slide
           slides[slideIndex].classList.add('active');
 
-          setTimeout(showSlides, 4000);
+          setTimeout(showSlides, parseInt(getComputedStyle(document.documentElement).getPropertyValue('--slideshow-interval')));
         }
 
-        // เริ่มต้นการแสดงสไลด์หลังจากโหลดหน้าเว็บ
-        window.onload = function() {
-            setTimeout(showSlides, 4000);
+        // Start slideshow after all images are loaded (or after a short delay)
+        window.onload = function () {
+          // A short delay ensures initial styles are applied
+          setTimeout(showSlides, parseInt(getComputedStyle(document.documentElement).getPropertyValue('--slideshow-interval')));
         };
+      })();
+
+      // Dynamic Particle Generation
+      (function () {
+        const numParticles = 30; // Number of particles
+        const mainContainer = document.querySelector('.main-container');
+
+        for (let i = 0; i < numParticles; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
+
+          const size =
+            Math.random() * (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--particle-size-max')) - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--particle-size-min'))) + parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--particle-size-min'));
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+
+          const startX = Math.random() * 100 + 'vw';
+          const startY = Math.random() * 100 + 'vh';
+          const endX = (Math.random() - 0.5) * 200 + 'vw'; // Random direction
+          const endY = (Math.random() - 0.5) * 200 + 'vh';
+
+          particle.style.setProperty('--start-x', startX);
+          particle.style.setProperty('--start-y', startY);
+          particle.style.setProperty('--end-x', endX);
+          particle.style.setProperty('--end-y', endY);
+
+          particle.style.animationDelay = `${Math.random() * 10}s`; // Stagger animation start
+          particle.style.animationDuration = `${20 + Math.random() * 15}s`; // Vary animation duration
+          particle.style.animationName = 'twinkle, moveParticles'; // Ensure both animations run
+
+          mainContainer.appendChild(particle);
+        }
       })();
     </script>
   </body>
