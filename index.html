@@ -1,501 +1,525 @@
 <!DOCTYPE html>
 <html lang="th">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Thinking of You ❤️</title>
-<link
-    href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&family=Prompt:wght@400;700&display=swap"
-    rel="stylesheet"
-/>
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background: linear-gradient(135deg, #ff9999, #ff66cc);
-    font-family: 'Prompt', sans-serif;
-    color: #fff;
-    overflow: hidden;
-    position: relative;
-    animation: backgroundShift 20s ease-in-out infinite alternate;
-  }
-  @keyframes backgroundShift {
-    0% {
-      background: linear-gradient(135deg, #ff9999, #ff66cc);
-    }
-    50% {
-      background: linear-gradient(135deg, #ff66cc, #ff9999);
-    }
-    100% {
-      background: linear-gradient(135deg, #ff9999, #ff66cc);
-    }
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thinking of You ❤️</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&family=Prompt:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #ff9999, #ff66cc);
+        font-family: 'Prompt', sans-serif;
+        color: #fff;
+        overflow: hidden;
+        position: relative;
+        animation: backgroundShift 20s ease-in-out infinite alternate;
+      }
+      @keyframes backgroundShift {
+        0% {
+          background: linear-gradient(135deg, #ff9999, #ff66cc);
+        }
+        50% {
+          background: linear-gradient(135deg, #ff66cc, #ff9999);
+        }
+        100% {
+          background: linear-gradient(135deg, #ff9999, #ff66cc);
+        }
+      }
 
-  .heart-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    padding: 30px;
-    box-sizing: border-box;
-    max-width: 95%;
-    min-height: 80vh;
-    position: relative;
-  }
+      .heart-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        padding: 30px;
+        box-sizing: border-box;
+        max-width: 95%;
+        min-height: 80vh;
+        position: relative;
+      }
 
-  /* ลิงก์หัวใจ */
-  .heart-link {
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    filter: none;
-    user-select: none;
-    position: relative;
-    z-index: 20;
-  }
+      /* ลิงก์หัวใจ */
+      .heart-link {
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+        filter: none;
+        user-select: none;
+        position: relative;
+        z-index: 20;
+      }
 
-  /* หัวใจหลัก */
-  .heart {
-    font-size: 10em;
-    color: #ff2a68;
-    animation: pulseGlow 1.5s ease-in-out infinite;
-    text-shadow:
-      0 0 8px #ff2a68,
-      0 0 20px #ff5a8f,
-      0 0 40px #ff2a68,
-      0 0 80px #ff5a8f;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
-    margin-bottom: 5px;
-    position: relative;
-    z-index: 20;
-    user-select: none;
-  }
+      /* หัวใจหลัก */
+      .heart {
+        font-size: 10em;
+        color: #ff2a68;
+        animation: pulseGlow 1.5s ease-in-out infinite;
+        text-shadow: 0 0 8px #ff2a68, 0 0 20px #ff5a8f, 0 0 40px #ff2a68,
+          0 0 80px #ff5a8f;
+        transition: transform 0.3s ease, text-shadow 0.3s ease;
+        margin-bottom: 5px;
+        position: relative;
+        z-index: 20;
+        user-select: none;
+      }
 
-  /* shine effect รอบหัวใจ */
-  .heart::before {
-    content: '';
-    position: absolute;
-    top: -15%;
-    left: -15%;
-    width: 130%;
-    height: 130%;
-    border-radius: 50%;
-    pointer-events: none;
-    background:
-      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), transparent 60%),
-      radial-gradient(circle at 70% 70%, rgba(255, 182, 193, 0.4), transparent 60%);
-    animation: shineRotate 4s linear infinite;
-    z-index: -1;
-  }
+      /* shine effect รอบหัวใจ */
+      .heart::before {
+        content: '';
+        position: absolute;
+        top: -15%;
+        left: -15%;
+        width: 130%;
+        height: 130%;
+        border-radius: 50%;
+        pointer-events: none;
+        background: radial-gradient(
+            circle at 30% 30%,
+            rgba(255, 255, 255, 0.6),
+            transparent 60%
+          ),
+          radial-gradient(
+            circle at 70% 70%,
+            rgba(255, 182, 193, 0.4),
+            transparent 60%
+          );
+        animation: shineRotate 4s linear infinite;
+        z-index: -1;
+      }
 
-  @keyframes shineRotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+      @keyframes shineRotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
 
-  @keyframes pulseGlow {
-    0%, 100% {
-      transform: scale(1);
-      text-shadow:
-        0 0 8px #ff2a68,
-        0 0 20px #ff5a8f,
-        0 0 40px #ff2a68,
-        0 0 80px #ff5a8f;
-    }
-    50% {
-      transform: scale(1.12);
-      text-shadow:
-        0 0 15px #ff2a68,
-        0 0 35px #ff5a8f,
-        0 0 70px #ff2a68,
-        0 0 120px #ff5a8f;
-    }
-  }
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          transform: scale(1);
+          text-shadow: 0 0 8px #ff2a68, 0 0 20px #ff5a8f, 0 0 40px #ff2a68,
+            0 0 80px #ff5a8f;
+        }
+        50% {
+          transform: scale(1.12);
+          text-shadow: 0 0 15px #ff2a68, 0 0 35px #ff5a8f, 0 0 70px #ff2a68,
+            0 0 120px #ff5a8f;
+        }
+      }
 
-  /* hover ขยาย + หมุน */
-  .heart-link:hover .heart {
-    transform: scale(1.3) rotate(-7deg);
-    text-shadow:
-      0 0 25px #ff2a68,
-      0 0 50px #ff5a8f,
-      0 0 75px #ff2a68,
-      0 0 120px #ff5a8f;
-  }
+      /* hover ขยาย + หมุน */
+      .heart-link:hover .heart {
+        transform: scale(1.3) rotate(-7deg);
+        text-shadow: 0 0 25px #ff2a68, 0 0 50px #ff5a8f, 0 0 75px #ff2a68,
+          0 0 120px #ff5a8f;
+      }
 
-  /* คลิกประกาย sparkles */
-  .heart-link:active .heart {
-    animation: sparkleBurst 0.6s forwards;
-  }
+      /* คลิกประกาย sparkles */
+      .heart-link:active .heart {
+        animation: sparkleBurst 0.6s forwards;
+      }
 
-  @keyframes sparkleBurst {
-    0% {
-      filter: drop-shadow(0 0 0 #fff);
-      transform: scale(1.3) rotate(-7deg);
-      text-shadow:
-        0 0 25px #ff2a68,
-        0 0 50px #ff5a8f,
-        0 0 75px #ff2a68,
-        0 0 120px #ff5a8f;
-    }
-    50% {
-      filter:
-        drop-shadow(0 0 12px #fff)
-        drop-shadow(0 0 25px #ffc0cb)
-        drop-shadow(0 0 40px #fff);
-      transform: scale(1.5) rotate(-12deg);
-      text-shadow:
-        0 0 30px #ff2a68,
-        0 0 65px #ff5a8f,
-        0 0 100px #ff2a68,
-        0 0 150px #ff5a8f;
-    }
-    100% {
-      filter: drop-shadow(0 0 0 #fff);
-      transform: scale(1.3) rotate(-7deg);
-      text-shadow:
-        0 0 25px #ff2a68,
-        0 0 50px #ff5a8f,
-        0 0 75px #ff2a68,
-        0 0 120px #ff5a8f;
-    }
-  }
+      @keyframes sparkleBurst {
+        0% {
+          filter: drop-shadow(0 0 0 #fff);
+          transform: scale(1.3) rotate(-7deg);
+          text-shadow: 0 0 25px #ff2a68, 0 0 50px #ff5a8f, 0 0 75px #ff2a68,
+            0 0 120px #ff5a8f;
+        }
+        50% {
+          filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 25px #ffc0cb)
+            drop-shadow(0 0 40px #fff);
+          transform: scale(1.5) rotate(-12deg);
+          text-shadow: 0 0 30px #ff2a68, 0 0 65px #ff5a8f, 0 0 100px #ff2a68,
+            0 0 150px #ff5a8f;
+        }
+        100% {
+          filter: drop-shadow(0 0 0 #fff);
+          transform: scale(1.3) rotate(-7deg);
+          text-shadow: 0 0 25px #ff2a68, 0 0 50px #ff5a8f, 0 0 75px #ff2a68,
+            0 0 120px #ff5a8f;
+        }
+      }
 
-  /* ข้อความใต้หัวใจ */
-  .heart-hint {
-    font-family: 'Mali', cursive;
-    font-size: 1em;
-    font-weight: 600;
-    color: #fff;
-    margin-top: 4px;
-    text-align: center;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-    user-select: none;
-    z-index: 15;
-  }
+      /* ข้อความใต้หัวใจ */
+      .heart-hint {
+        font-family: 'Mali', cursive;
+        font-size: 1em;
+        font-weight: 600;
+        color: #fff;
+        margin-top: 4px;
+        text-align: center;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        user-select: none;
+        z-index: 15;
+      }
 
-  /* รูปภาพแบบ Grid ที่จะสไลด์อัตโนมัติ */
-  .image-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 40px;
-    max-width: 700px;
-    width: 100%;
-    justify-items: center;
-    align-items: center;
-    z-index: 10;
-    overflow: hidden;
-    position: relative;
-  }
+      /* Slideshow Container */
+      .image-slideshow {
+        position: relative;
+        width: 100%; /* หรือกำหนดขนาดตามที่ต้องการ */
+        max-width: 600px; /* ขนาดสูงสุดของสไลด์ */
+        height: 400px; /* ความสูงของสไลด์ */
+        margin-top: 40px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex; /* ใช้ flexbox เพื่อจัดตำแหน่งรูป */
+        justify-content: center;
+        align-items: center;
+      }
 
-  .image-grid img {
-    width: 100%;
-    height: 180px;
-    object-fit: contain; /* แก้ให้เต็มรูปแบบไม่ครอป */
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
-    border: 3px solid rgba(255, 255, 255, 0.7);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
-    cursor: default;
-  }
+      /* แต่ละสไลด์ */
+      .mySlides {
+        display: none; /* ซ่อนทุกสไลด์เริ่มต้น */
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0; /* เริ่มต้นด้วยความโปร่งใส 0 */
+        transition: opacity 1.5s ease-in-out; /* เพิ่ม transition สำหรับ fade effect */
+        display: flex; /* ใช้ flexbox เพื่อจัดตำแหน่งรูปและข้อความในสไลด์ */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-  .image-grid img:hover {
-    transform: scale(1.05);
-  }
+      /* รูปภาพภายในสไลด์ */
+      .mySlides img {
+        width: 90%; /* ขนาดของรูปภาพในสไลด์ */
+        max-height: 80%;
+        object-fit: contain; /* ให้รูปภาพพอดีโดยไม่ครอป */
+        border-radius: 15px;
+        border: 4px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      }
 
-  /* กล่องล่างแบบ flex */
-  .bottom-row-center {
-    grid-column: 1 / span 3;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-  }
+      /* ข้อความใต้รูปภาพในสไลด์ (ถ้ามี) */
+      .slide-text {
+        font-family: 'Mali', cursive;
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #fff;
+        margin-top: 15px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        text-align: center;
+      }
 
-  .bottom-row-center img {
-    max-width: 45%;
-    height: 180px;
-    object-fit: contain; /* เต็มรูป */
-  }
+      /* แสดงสไลด์ปัจจุบัน */
+      .mySlides.active {
+        display: flex; /* แสดงสไลด์ที่ active */
+        opacity: 1; /* ทำให้มองเห็น */
+      }
 
-  /* ข้อความวิ่ง */
-  .message-marquee {
-    font-family: 'Mali', cursive;
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #fff;
-    margin-top: 20px;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-    white-space: nowrap;
-    overflow: hidden;
-    box-sizing: border-box;
-    max-width: 100vw;
-    user-select: none;
-    z-index: 10;
-  }
+      /* ข้อความวิ่ง */
+      .message-marquee {
+        font-family: 'Mali', cursive;
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #fff;
+        margin-top: 20px;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        white-space: nowrap;
+        overflow: hidden;
+        box-sizing: border-box;
+        max-width: 100vw;
+        user-select: none;
+        z-index: 10;
+      }
 
-  .message-marquee span {
-    display: inline-block;
-    padding-left: 100vw;
-    animation: marquee 15s linear infinite;
-  }
+      .message-marquee span {
+        display: inline-block;
+        padding-left: 100vw;
+        animation: marquee 15s linear infinite;
+      }
 
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
 
-  /* Particle effects */
-  .particle {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.7);
-    animation: twinkle 2s infinite, moveParticles 10s linear infinite;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    z-index: 5;
-  }
+      /* Particle effects */
+      .particle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.7);
+        animation: twinkle 2s infinite, moveParticles 10s linear infinite;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        z-index: 5;
+      }
 
-  @keyframes twinkle {
-    0%, 100% {
-      opacity: 0.5;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.3);
-    }
-  }
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.5;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.3);
+        }
+      }
 
-  @keyframes moveParticles {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(100vw, 100vh);
-    }
-  }
+      @keyframes moveParticles {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(100vw, 100vh);
+        }
+      }
 
-  /* ตำแหน่ง particle (เหมือนเดิม) */
-  .particle:nth-child(1) {
-    top: 10%;
-    left: 15%;
-    animation-delay: 0.5s;
-    width: 8px;
-    height: 8px;
-  }
-  .particle:nth-child(2) {
-    top: 30%;
-    right: 10%;
-    animation-delay: 1s;
-    width: 10px;
-    height: 10px;
-  }
-  .particle:nth-child(3) {
-    bottom: 20%;
-    left: 25%;
-    animation-delay: 1.5s;
-    width: 7px;
-    height: 7px;
-  }
-  .particle:nth-child(4) {
-    top: 45%;
-    right: 30%;
-    animation-delay: 2s;
-    width: 9px;
-    height: 9px;
-  }
-  .particle:nth-child(5) {
-    bottom: 35%;
-    left: 5%;
-    animation-delay: 2.5s;
-    width: 12px;
-    height: 12px;
-  }
-  .particle:nth-child(6) {
-    top: 20%;
-    left: 40%;
-    animation-delay: 3s;
-    width: 6px;
-    height: 6px;
-  }
-  .particle:nth-child(7) {
-    bottom: 10%;
-    right: 15%;
-    animation-delay: 3.5s;
-    width: 11px;
-    height: 11px;
-  }
-  .particle:nth-child(8) {
-    top: 5%;
-    left: 55%;
-    animation-delay: 4s;
-    width: 8px;
-    height: 8px;
-  }
-  .particle:nth-child(9) {
-    bottom: 45%;
-    right: 25%;
-    animation-delay: 4.5s;
-    width: 7px;
-    height: 7px;
-  }
-  .particle:nth-child(10) {
-    top: 30%;
-    left: 10%;
-    animation-delay: 5s;
-    width: 10px;
-    height: 10px;
-  }
-  .particle:nth-child(11) {
-    top: 55%;
-    left: 5%;
-    animation-delay: 0.8s;
-    width: 9px;
-    height: 9px;
-  }
-  .particle:nth-child(12) {
-    top: 70%;
-    right: 20%;
-    animation-delay: 1.8s;
-    width: 6px;
-    height: 6px;
-  }
-  .particle:nth-child(13) {
-    bottom: 5%;
-    left: 60%;
-    animation-delay: 2.2s;
-    width: 10px;
-    height: 10px;
-  }
-  .particle:nth-child(14) {
-    top: 15%;
-    right: 5%;
-    animation-delay: 3.2s;
-    width: 7px;
-    height: 7px;
-  }
-  .particle:nth-child(15) {
-    bottom: 50%;
-    left: 40%;
-    animation-delay: 4.2s;
-    width: 8px;
-    height: 8px;
-  }
-</style>
-</head>
-<body>
-<audio id="background-music" autoplay loop>
-  <source src="เพลงรัก.mp3" type="audio/mpeg" />
-  เบราว์เซอร์ของคุณไม่รองรับการเล่นไฟล์เสียง
-</audio>
+      /* ตำแหน่ง particle (เหมือนเดิม) */
+      .particle:nth-child(1) {
+        top: 10%;
+        left: 15%;
+        animation-delay: 0.5s;
+        width: 8px;
+        height: 8px;
+      }
+      .particle:nth-child(2) {
+        top: 30%;
+        right: 10%;
+        animation-delay: 1s;
+        width: 10px;
+        height: 10px;
+      }
+      .particle:nth-child(3) {
+        bottom: 20%;
+        left: 25%;
+        animation-delay: 1.5s;
+        width: 7px;
+        height: 7px;
+      }
+      .particle:nth-child(4) {
+        top: 45%;
+        right: 30%;
+        animation-delay: 2s;
+        width: 9px;
+        height: 9px;
+      }
+      .particle:nth-child(5) {
+        bottom: 35%;
+        left: 5%;
+        animation-delay: 2.5s;
+        width: 12px;
+        height: 12px;
+      }
+      .particle:nth-child(6) {
+        top: 20%;
+        left: 40%;
+        animation-delay: 3s;
+        width: 6px;
+        height: 6px;
+      }
+      .particle:nth-child(7) {
+        bottom: 10%;
+        right: 15%;
+        animation-delay: 3.5s;
+        width: 11px;
+        height: 11px;
+      }
+      .particle:nth-child(8) {
+        top: 5%;
+        left: 55%;
+        animation-delay: 4s;
+        width: 8px;
+        height: 8px;
+      }
+      .particle:nth-child(9) {
+        bottom: 45%;
+        right: 25%;
+        animation-delay: 4.5s;
+        width: 7px;
+        height: 7px;
+      }
+      .particle:nth-child(10) {
+        top: 30%;
+        left: 10%;
+        animation-delay: 5s;
+        width: 10px;
+        height: 10px;
+      }
+      .particle:nth-child(11) {
+        top: 55%;
+        left: 5%;
+        animation-delay: 0.8s;
+        width: 9px;
+        height: 9px;
+      }
+      .particle:nth-child(12) {
+        top: 70%;
+        right: 20%;
+        animation-delay: 1.8s;
+        width: 6px;
+        height: 6px;
+      }
+      .particle:nth-child(13) {
+        bottom: 5%;
+        left: 60%;
+        animation-delay: 2.2s;
+        width: 10px;
+        height: 10px;
+      }
+      .particle:nth-child(14) {
+        top: 15%;
+        right: 5%;
+        animation-delay: 3.2s;
+        width: 7px;
+        height: 7px;
+      }
+      .particle:nth-child(15) {
+        bottom: 50%;
+        left: 40%;
+        animation-delay: 4.2s;
+        width: 8px;
+        height: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="background-music" autoplay loop>
+      <source src="เพลงรัก.mp3" type="audio/mpeg" />
+      เบราว์เซอร์ของคุณไม่รองรับการเล่นไฟล์เสียง
+    </audio>
 
-<div class="heart-container">
-  <a
-    href="https://www.instagram.com/thewin_wonganan?igsh=NWszY2hvd2Z3bGxz"
-    target="_blank"
-    class="heart-link"
-    title="ไป Instagram พี่หวัน"
-    >
-    <div class="heart">❤️</div>
-  </a>
-  <div class="heart-hint">ลองกดตรงรูปหัวใจดูสิครับ</div>
+    <div class="heart-container">
+      <a
+        href="https://www.instagram.com/thewin_wonganan?igsh=NWszY2hvd2Z3bGxz"
+        target="_blank"
+        class="heart-link"
+        title="ไป Instagram พี่หวัน"
+      >
+        <div class="heart">❤️</div>
+      </a>
+      <div class="heart-hint">ลองกดตรงรูปหัวใจดูสิครับ</div>
 
-  <div class="image-grid" id="imageGrid">
-    <!-- รูปภาพจะถูกเปลี่ยนสลับด้วย JS -->
-    <img src="Tawan1.jpg" alt="Tawan 1" />
-    <img src="Tawan2.jpg" alt="Tawan 2" />
-    <img src="Tawan3.jpg" alt="Tawan 3" />
-    <div class="bottom-row-center">
-      <img src="Tawan4.jpg" alt="Tawan 4" />
-      <img src="Tawan5.jpg" alt="Tawan 5" />
+      <div class="image-slideshow" id="imageSlideshow">
+        </div>
+
+      <div class="message-marquee">
+        <span>Thinking of you, P'Tawan.</span>
+      </div>
+
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
     </div>
-  </div>
 
-  <div class="message-marquee">
-    <span>Thinking of you, P'Tawan.</span>
-  </div>
+    <script>
+      // เล่นเพลงแบบ auto-play พร้อม fallback
+      document.addEventListener('DOMContentLoaded', function () {
+        var music = document.getElementById('background-music');
+        music.play().catch(function (error) {
+          console.log('Autoplay was prevented. Attaching click listener.');
+          document.body.addEventListener(
+            'click',
+            function () {
+              music.play();
+            },
+            { once: true }
+          );
+        });
+      });
 
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-</div>
+      // Auto slide รูปภาพแบบ Fade-in/Fade-out
+      (function () {
+        const slidesData = [
+          { src: 'Tawan1.jpg', alt: 'Tawan 1', text: 'ยิ้มสดใสในวันแรก' },
+          { src: 'Tawan2.jpg', alt: 'Tawan 2', text: 'มุมเท่ๆ ที่ดูดี' },
+          { src: 'Tawan3.jpg', alt: 'Tawan 3', text: 'บรรยากาศสบายๆ' },
+          { src: 'Tawan4.jpg', alt: 'Tawan 4', text: 'ความสุขเล็กๆ' },
+          { src: 'Tawan5.jpg', alt: 'Tawan 5', text: 'หล่อเท่ในทุกมุม' },
+          { src: 'Tawan6.jpg', alt: 'Tawan 6', text: 'คิดถึงนะค้าบบ' },
+          { src: 'Tawan7.jpg', alt: 'Tawan 7', text: 'แค่เห็นก็ใจละลาย' },
+          { src: 'Tawan8.jpg', alt: 'Tawan 8', text: 'ความทรงจำดีๆ' },
+          { src: 'Tawan9.jpg', alt: 'Tawan 9', text: 'เสน่ห์ที่ไม่เหมือนใคร' },
+          // สามารถเพิ่มรูปภาพและข้อความได้อีกตามต้องการ
+        ];
 
-<script>
-  // เล่นเพลงแบบ auto-play พร้อม fallback
-  document.addEventListener('DOMContentLoaded', function () {
-    var music = document.getElementById('background-music');
-    music.play().catch(function (error) {
-      console.log('Autoplay was prevented. Attaching click listener.');
-      document.body.addEventListener(
-        'click',
-        function () {
-          music.play();
-        },
-        { once: true }
-      );
-    });
-  });
+        let slideIndex = 0;
+        const slideshowContainer = document.getElementById('imageSlideshow');
 
-  // Auto slide รูปภาพใน grid โดยสลับตำแหน่งรูปแบบง่ายๆ
-  (function() {
-    const imagesTop = [
-      "Tawan1.jpg",
-      "Tawan2.jpg",
-      "Tawan3.jpg",
-      "Tawan4.jpg",
-      "Tawan5.jpg"
-    ];
+        // สร้างสไลด์จากข้อมูลใน slidesData
+        slidesData.forEach((data, index) => {
+          const slideDiv = document.createElement('div');
+          slideDiv.classList.add('mySlides', 'fade'); // เพิ่มคลาส fade สำหรับ transition
+          if (index === 0) {
+            slideDiv.classList.add('active'); // ตั้งค่าสไลด์แรกให้ active
+          }
 
-    let currentIndex = 0;
-    const topImgs = document.querySelectorAll('#imageGrid > img');
-    const bottomImgs = document.querySelectorAll('#imageGrid .bottom-row-center img');
+          const img = document.createElement('img');
+          img.src = data.src;
+          img.alt = data.alt;
+          slideDiv.appendChild(img);
 
-    // ฟังก์ชันอัพเดตภาพในกริด
-    function updateImages() {
-      // สลับ 3 ภาพบน (grid > img 3 ตัวแรก)
-      for(let i=0; i<topImgs.length; i++){
-        let idx = (currentIndex + i) % imagesTop.length;
-        topImgs[i].src = imagesTop[idx];
-        topImgs[i].alt = "Tawan " + (idx + 1);
-      }
-      // สลับ 2 ภาพล่าง (bottom-row-center)
-      for(let j=0; j<bottomImgs.length; j++){
-        let idx = (currentIndex + 3 + j) % imagesTop.length;
-        bottomImgs[j].src = imagesTop[idx];
-        bottomImgs[j].alt = "Tawan " + (idx + 1);
-      }
-      currentIndex = (currentIndex + 1) % imagesTop.length;
-    }
+          if (data.text) {
+            const textDiv = document.createElement('div');
+            textDiv.classList.add('slide-text');
+            textDiv.textContent = data.text;
+            slideDiv.appendChild(textDiv);
+          }
+          slideshowContainer.appendChild(slideDiv);
+        });
 
-    setInterval(updateImages, 4000); // เปลี่ยนภาพทุก 4 วินาที
-  })();
-</script>
-</body>
+        const slides = document.querySelectorAll('.mySlides');
+
+        function showSlides() {
+          // ซ่อนสไลด์ปัจจุบัน
+          slides[slideIndex].classList.remove('active');
+
+          // ไปยังสไลด์ถัดไป
+          slideIndex++;
+          if (slideIndex > slides.length - 1) {
+            slideIndex = 0; // วนกลับไปสไลด์แรกเมื่อถึงสไลด์สุดท้าย
+          }
+
+          // แสดงสไลด์ถัดไป
+          slides[slideIndex].classList.add('active');
+
+          // เรียกฟังก์ชันนี้ซ้ำหลังจาก 4 วินาที (รวมเวลา fade)
+          setTimeout(showSlides, 4000);
+        }
+
+        // เริ่มต้นการแสดงสไลด์หลังจากโหลดหน้าเว็บ
+        // ให้รอโหลดรูปภาพทั้งหมดก่อนเริ่มสไลด์จริง
+        window.onload = function() {
+            setTimeout(showSlides, 4000); // เริ่มสไลด์แรกหลังจาก 4 วินาที
+        };
+
+      })();
+    </script>
+  </body>
 </html>
