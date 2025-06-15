@@ -34,8 +34,8 @@
 
       body {
         display: flex;
-        flex-direction: column; /* **ปรับตรงนี้: ให้ body เป็น column เพื่อวาง content และ footer** */
-        justify-content: space-between; /* **ปรับตรงนี้: กระจายเนื้อหาหลักกับ footer** */
+        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
         min-height: 100vh;
         margin: 0;
@@ -91,10 +91,9 @@
         max-width: 90vw;
         width: 100%;
         min-height: auto;
-        height: 100%; /* **ปรับตรงนี้: ให้ main-container ใช้ความสูงที่เหลือจาก body ทั้งหมด** */
+        height: 100%;
         position: relative;
         text-align: center;
-        /* margin-bottom: 20px; **ลบออก: เพราะใช้ justify-content: space-between ใน body แล้ว** */
       }
 
       /* Crystal Heart */
@@ -344,13 +343,13 @@
       /* Footer Text */
       .footer-text {
         font-family: var(--font-mali);
-        font-size: clamp(0.7rem, 2vw, 0.9rem); /* **ปรับขนาดตามจอ** */
-        color: rgba(255, 255, 255, 0.7); /* สีข้อความจางลงเล็กน้อย */
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+        color: rgba(255, 255, 255, 0.7);
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
         text-align: center;
-        margin-top: 1rem; /* ระยะห่างจากข้อความด้านบน */
-        margin-bottom: 1rem; /* ระยะห่างจากขอบล่าง */
-        line-height: 1.5; /* ระยะห่างระหว่างบรรทัด */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
         z-index: 10;
         user-select: none;
       }
@@ -387,19 +386,19 @@
 
       @media (max-width: 768px) {
         body {
-          align-items: center; /* **ปรับกลับเป็น center** */
+          align-items: center;
           padding: 1.5rem 0;
           overflow-y: auto;
           overflow-x: hidden;
           min-height: 100vh;
-          justify-content: space-between; /* **ยังคงกระจายเนื้อหาหลักกับ footer** */
+          justify-content: space-between;
         }
         .main-container {
           padding: 1.5rem 1rem;
           min-height: auto;
           max-width: 95vw;
-          height: auto; /* Allow auto height for mobile to scroll */
-          flex-grow: 0; /* **มือถือไม่ต้องขยายเต็มพื้นที่** */
+          height: auto;
+          flex-grow: 0;
         }
         .heart {
           font-size: clamp(4em, 8vw, 6em);
@@ -428,9 +427,9 @@
           margin-top: 1.5rem;
         }
         .footer-text {
-            font-size: clamp(0.55rem, 1.6vw, 0.7rem);
-            margin-top: 0.7rem;
-            margin-bottom: 0.7rem;
+            font-size: clamp(0.5rem, 1.5vw, 0.65rem); /* Adjusted font size for mobile */
+            margin-top: 0.5rem; /* Adjusted margin for mobile */
+            margin-bottom: 0.3rem; /* Adjusted margin for mobile */
         }
         .particle {
             width: var(--particle-size-min);
@@ -464,9 +463,9 @@
           margin-top: 1rem;
         }
         .footer-text {
-            font-size: clamp(0.5rem, 1.5vw, 0.65rem);
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(0.4rem, 1.3vw, 0.55rem); /* Adjusted font size for smaller mobile */
+            margin-top: 0.4rem; /* Adjusted margin for smaller mobile */
+            margin-bottom: 0.2rem; /* Adjusted margin for smaller mobile */
         }
       }
     </style>
@@ -498,7 +497,7 @@
       </div>
 
     <div class="footer-text">
-      <p>Copyright by thewin wonganann</p>
+      <p>**©** Copyright by thewin wonganann</p>
       <p>ขอบคุณที่ผ่านเข้ามาในชีวิต ให้ผมรู้จักคำว่ารักเป็นนะครับ</p>
     </div>
 
@@ -523,12 +522,11 @@
       // Photo Gallery Slideshow Logic
       (function () {
         const slidesData = [
-          { src: 'Tawan1.jpg', alt: 'Tawan 1', caption: 'ขอบคุณที่ช่วยถือเป๋าในวันนั้น' },
-          { src: 'Tawan2.jpg', alt: 'Tawan 2', caption: 'ขอบคุณที่ไม่เคยปฎิเสธ' },
-          { src: 'Tawan3.jpg', alt: 'Tawan 3', caption: 'ขอบคุณที่พยายามรักษาน้ำใจ' },
-          { src: 'Tawan4.jpg', alt: 'Tawan 4', caption: 'ขอโทษที่ทำให้คิดมาก' },
-          { src: 'Tawan5.jpg', alt: 'Tawan 5', caption: 'ขอโทษที่ทำให้ลำบากใจ' },
-          
+          { src: 'Tawan1.jpg', alt: 'ขอบคุณที่ช่วยถือเป๋าในวันนั้น', caption: 'ขอบคุณที่ช่วยถือเป๋าในวันนั้น' },
+          { src: 'Tawan2.jpg', alt: 'ขอบคุณที่ไม่เคยปฎิเสธ', caption: 'ขอบคุณที่ไม่เคยปฎิเสธ' },
+          { src: 'Tawan3.jpg', alt: 'ขอบคุณที่พยายามรักษาน้ำใจ', caption: 'ขอบคุณที่พยายามรักษาน้ำใจ' },
+          { src: 'Tawan4.jpg', alt: 'ขอโทษที่ทำให้คิดมาก', caption: 'ขอโทษที่ทำให้คิดมาก' },
+          { src: 'Tawan5.jpg', alt: 'ขอโทษที่ทำให้ลำบากใจ', caption: 'ขอโทษที่ทำให้ลำบากใจ' },
           // Add more images and captions here!
         ];
 
