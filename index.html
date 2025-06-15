@@ -110,7 +110,8 @@
       }
 
       .heart {
-        font-size: clamp(6em, 15vw, 10em);
+        /* ปรับขนาดหัวใจให้ใหญ่ขึ้น */
+        font-size: clamp(8em, 20vw, 12em); 
         color: var(--heart-color);
         animation: pulseGlow var(--animation-duration-heart) ease-in-out infinite;
         text-shadow: 0 0 15px var(--heart-glow-1), 0 0 30px var(--heart-glow-2),
@@ -168,7 +169,8 @@
 
       /* Hover/Active Effects */
       .heart-link:hover .heart {
-        transform: scale(1.25) rotate(-5deg);
+        /* ปรับขนาดเมื่อ hover/active ให้ใหญ่ขึ้นตามขนาดหัวใจที่เพิ่ม */
+        transform: scale(1.35) rotate(-5deg); 
         filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.8));
         text-shadow: 0 0 30px var(--heart-glow-1), 0 0 60px var(--heart-glow-2),
           0 0 90px var(--heart-glow-1), 0 0 150px var(--heart-glow-2);
@@ -180,18 +182,18 @@
 
       @keyframes sparkleBurst {
         0% {
-          transform: scale(1.25) rotate(-5deg);
+          transform: scale(1.35) rotate(-5deg); /* ปรับตามขนาดใหม่ */
           filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.8));
           text-shadow: inherit;
         }
         50% {
-          transform: scale(1.4) rotate(-10deg);
+          transform: scale(1.5) rotate(-10deg); /* ปรับตามขนาดใหม่ */
           filter: drop-shadow(0 0 25px #fff) drop-shadow(0 0 50px #ffc0cb)
             drop-shadow(0 0 80px #fff);
           text-shadow: 0 0 40px #fff, 0 0 80px #ffc0cb, 0 0 120px #fff;
         }
         100% {
-          transform: scale(1.25) rotate(-5deg);
+          transform: scale(1.35) rotate(-5deg); /* ปรับตามขนาดใหม่ */
           filter: drop-shadow(0 0 0 #fff);
           text-shadow: inherit;
         }
@@ -346,9 +348,11 @@
       /* Footer Text */
       .footer-text {
         font-family: var(--font-mali);
-        font-size: clamp(0.7rem, 2vw, 0.9rem);
-        color: rgba(255, 255, 255, 0.7);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        /* ปรับขนาดฟอนต์ให้ใหญ่ขึ้น และใช้สีขาวเพื่อให้เด่นชัด */
+        font-size: clamp(1rem, 3vw, 1.2rem); 
+        color: #fff; /* เปลี่ยนเป็นสีขาว */
+        /* ปรับ shadow ให้เข้มขึ้น */
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5); 
         text-align: center;
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -365,7 +369,8 @@
           padding: 2rem 1.5rem;
         }
         .heart {
-          font-size: clamp(5em, 10vw, 8em);
+          /* ปรับขนาดหัวใจสำหรับ tablet */
+          font-size: clamp(7em, 15vw, 10em);
         }
         .heart-hint {
           font-size: 1rem;
@@ -382,7 +387,8 @@
           font-size: clamp(1.2em, 4vw, 2.8em);
         }
         .footer-text {
-            font-size: clamp(0.6rem, 1.8vw, 0.8rem);
+            /* ปรับขนาดฟอนต์สำหรับ tablet */
+            font-size: clamp(0.8rem, 2vw, 1rem); 
             margin-top: 0.8rem;
             margin-bottom: 0.8rem;
         }
@@ -407,11 +413,13 @@
           justify-content: space-around; /* กระจายองค์ประกอบให้เต็มพื้นที่ */
         }
         .heart {
-          font-size: clamp(4em, 8vw, 6em);
+          /* ปรับขนาดหัวใจสำหรับ mobile */
+          font-size: clamp(6em, 12vw, 8em);
         }
         .heart-link:hover .heart,
         .heart-link:active .heart {
-            transform: scale(1.1) rotate(-3deg);
+            /* ปรับตามขนาดใหม่ */
+            transform: scale(1.15) rotate(-3deg); 
             text-shadow: 0 0 15px var(--heart-glow-1), 0 0 30px var(--heart-glow-2), 0 0 45px var(--heart-glow-1), 0 0 80px var(--heart-glow-2);
         }
         .heart-hint {
@@ -435,7 +443,8 @@
           height: 1.2em; /* ลดความสูงของ floating message เพื่อประหยัดพื้นที่ */
         }
         .footer-text {
-            font-size: clamp(0.5rem, 1.5vw, 0.65rem); 
+            /* ปรับขนาดฟอนต์สำหรับ mobile */
+            font-size: clamp(0.7rem, 2vw, 0.9rem); 
             margin-top: 0.5rem; 
             margin-bottom: 0.3rem; 
         }
@@ -452,7 +461,8 @@
 
       @media (max-width: 480px) {
         .heart {
-          font-size: clamp(3.5em, 7vw, 5em);
+          /* ปรับขนาดหัวใจสำหรับ mobile จอเล็ก */
+          font-size: clamp(5em, 10vw, 7em);
         }
         .heart-hint {
           font-size: 0.8rem;
@@ -473,7 +483,8 @@
           height: 1em; /* ลดความสูงของ floating message อีก */
         }
         .footer-text {
-            font-size: clamp(0.4rem, 1.3vw, 0.55rem); 
+            /* ปรับขนาดฟอนต์สำหรับ mobile จอเล็ก */
+            font-size: clamp(0.6rem, 1.8vw, 0.75rem); 
             margin-top: 0.3rem; 
             margin-bottom: 0.1rem; 
         }
@@ -506,7 +517,7 @@
     </div>
 
     <div class="footer-text">
-      <p>**©** Copyright by thewin wonganann</p>
+      <p> © Copyright by thewin wonganann</p>
       <p>ขอบคุณที่ผ่านเข้ามาในชีวิต ให้ผมรู้จักคำว่ารักเป็นนะครับ</p>
     </div>
 
