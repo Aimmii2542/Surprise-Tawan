@@ -1,474 +1,329 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Thinking of You ❤️</title>
-<link
-  href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&family=Prompt:wght@400;700&display=swap"
-  rel="stylesheet"
-/>
-<style>
-  /* Reset & base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: radial-gradient(ellipse at center, #fce4ec 0%, #f48fb1 70%);
-    font-family: 'Prompt', sans-serif;
-    color: #4a0033;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thinking of You ❤️</title>
 
-  .container {
-    background: rgba(255 255 255 / 0.9);
-    padding: 30px 40px 50px 40px;
-    border-radius: 25px;
-    box-shadow:
-      0 8px 30px rgba(244, 143, 177, 0.4),
-      inset 0 0 60px rgba(255 182 193 / 0.35);
-    max-width: 800px;
-    width: 100%;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-  }
+  <!-- ฟอนต์ Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&family=Prompt:wght@400;700&display=swap" rel="stylesheet" />
 
-  /* Heart */
-  .heart-link {
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    margin-bottom: 10px;
-    outline: none;
-  }
-
-  .heart {
-    font-size: 11rem;
-    color: #d81b60;
-    filter: drop-shadow(0 0 10px #f48fb1);
-    text-shadow:
-      0 0 8px #d81b60,
-      0 0 25px #f06292,
-      0 0 40px #f48fb1,
-      0 0 70px #f48fb1;
-    animation: heartbeat 1.8s infinite ease-in-out;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    user-select: none;
-  }
-
-  /* 3D pop effect on hover */
-  .heart-link:hover .heart {
-    transform: scale(1.25) rotate(-8deg) translateY(-10px);
-    filter:
-      drop-shadow(0 0 15px #f48fb1)
-      drop-shadow(0 0 30px #ec407a);
-    text-shadow:
-      0 0 15px #d81b60,
-      0 0 40px #ec407a,
-      0 0 70px #f48fb1,
-      0 0 120px #f48fb1;
-  }
-
-  /* Click sparkle */
-  .heart-link:active .heart {
-    animation: sparkleBurst 0.8s forwards;
-  }
-
-  @keyframes heartbeat {
-    0%, 100% {
-      transform: scale(1);
-      filter: drop-shadow(0 0 10px #f48fb1);
-      text-shadow:
-        0 0 8px #d81b60,
-        0 0 25px #f06292,
-        0 0 40px #f48fb1,
-        0 0 70px #f48fb1;
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-    50% {
-      transform: scale(1.15);
-      filter: drop-shadow(0 0 20px #f48fb1);
-      text-shadow:
-        0 0 15px #d81b60,
-        0 0 35px #ec407a,
-        0 0 60px #f48fb1,
-        0 0 110px #f48fb1;
-    }
-  }
-
-  @keyframes sparkleBurst {
-    0% {
-      transform: scale(1.3) rotate(-8deg) translateY(-10px);
-      filter:
-        drop-shadow(0 0 15px #f48fb1)
-        drop-shadow(0 0 30px #ec407a);
-      text-shadow:
-        0 0 15px #d81b60,
-        0 0 40px #ec407a,
-        0 0 70px #f48fb1,
-        0 0 120px #f48fb1;
-    }
-    50% {
-      filter:
-        drop-shadow(0 0 25px #fff)
-        drop-shadow(0 0 60px #ff80ab)
-        drop-shadow(0 0 90px #fff);
-      transform: scale(1.6) rotate(-15deg) translateY(-25px);
-      text-shadow:
-        0 0 30px #ff4081,
-        0 0 65px #f48fb1,
-        0 0 110px #f48fb1,
-        0 0 180px #ff80ab;
-    }
-    100% {
-      transform: scale(1.3) rotate(-8deg) translateY(-10px);
-      filter:
-        drop-shadow(0 0 15px #f48fb1)
-        drop-shadow(0 0 30px #ec407a);
-      text-shadow:
-        0 0 15px #d81b60,
-        0 0 40px #ec407a,
-        0 0 70px #f48fb1,
-        0 0 120px #f48fb1;
-    }
-  }
-
-  .hint {
-    font-family: 'Mali', cursive;
-    font-weight: 700;
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    color: #880e4f;
-    text-shadow: 0 0 8px #fff6f9;
-    user-select: none;
-  }
-
-  /* Grid รูปภาพ */
-  .image-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 35px;
-  }
-
-  .image-grid img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow:
-      0 6px 15px rgba(232, 121, 167, 0.35),
-      inset 0 0 30px rgba(255 182 193 / 0.25);
-    transition: transform 0.4s ease, box-shadow 0.3s ease;
-    cursor: default;
-  }
-
-  .image-grid img:hover {
-    transform: scale(1.05) translateY(-6px);
-    box-shadow:
-      0 10px 25px rgba(232, 121, 167, 0.6),
-      inset 0 0 40px rgba(255 182 193 / 0.4);
-  }
-
-  /* แถวล่าง 2 รูป ให้วางคู่กันแบบชิดซ้ายขวา */
-  .bottom-row-center {
-    grid-column: 1 / span 3;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
-  .bottom-row-center img {
-    width: 48%;
-    height: 160px;
-  }
-
-  /* ข้อความวิ่งแบบนุ่มนวล */
-  .marquee-wrapper {
-    overflow: hidden;
-    white-space: nowrap;
-    border-radius: 15px;
-    background: linear-gradient(90deg, #f8bbd0, #f48fb1);
-    padding: 12px 0;
-    box-shadow: 0 0 20px #f48fb1aa;
-  }
-
-  .message-marquee {
-    display: inline-block;
-    font-family: 'Mali', cursive;
-    font-weight: 700;
-    font-size: 2.4rem;
-    color: #fff;
-    padding-left: 100%;
-    animation: marquee 16s linear infinite;
-    user-select: none;
-    text-shadow:
-      0 0 5px #880e4f,
-      0 0 15px #ec407a;
-  }
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  /* Particle - ประกายลอย */
-  .particle {
-    position: fixed;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #fff1f7, #f48fb1);
-    box-shadow:
-      0 0 8px #f48fb1aa,
-      0 0 15px #f48fb1bb;
-    animation: sparkleMove 15s linear infinite;
-    opacity: 0.75;
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  /* แต่ละตัว size, ตำแหน่ง และ animation-delay ต่างกัน */
-  .particle:nth-child(1) {
-    width: 12px;
-    height: 12px;
-    top: 15%;
-    left: 5%;
-    animation-delay: 0s;
-  }
-  .particle:nth-child(2) {
-    width: 8px;
-    height: 8px;
-    top: 40%;
-    left: 15%;
-    animation-delay: 3s;
-  }
-  .particle:nth-child(3) {
-    width: 10px;
-    height: 10px;
-    top: 75%;
-    left: 10%;
-    animation-delay: 6s;
-  }
-  .particle:nth-child(4) {
-    width: 14px;
-    height: 14px;
-    top: 20%;
-    left: 70%;
-    animation-delay: 1.5s;
-  }
-  .particle:nth-child(5) {
-    width: 7px;
-    height: 7px;
-    top: 65%;
-    left: 80%;
-    animation-delay: 4.5s;
-  }
-  .particle:nth-child(6) {
-    width: 9px;
-    height: 9px;
-    top: 85%;
-    left: 85%;
-    animation-delay: 8s;
-  }
-  .particle:nth-child(7) {
-    width: 11px;
-    height: 11px;
-    top: 45%;
-    left: 90%;
-    animation-delay: 5s;
-  }
-  .particle:nth-child(8) {
-    width: 6px;
-    height: 6px;
-    top: 10%;
-    left: 50%;
-    animation-delay: 2s;
-  }
-  .particle:nth-child(9) {
-    width: 13px;
-    height: 13px;
-    top: 55%;
-    left: 55%;
-    animation-delay: 7s;
-  }
-  .particle:nth-child(10) {
-    width: 7px;
-    height: 7px;
-    top: 35%;
-    left: 75%;
-    animation-delay: 9s;
-  }
-  .particle:nth-child(11) {
-    width: 8px;
-    height: 8px;
-    top: 65%;
-    left: 60%;
-    animation-delay: 11s;
-  }
-  .particle:nth-child(12) {
-    width: 10px;
-    height: 10px;
-    top: 5%;
-    left: 80%;
-    animation-delay: 13s;
-  }
-  .particle:nth-child(13) {
-    width: 9px;
-    height: 9px;
-    top: 75%;
-    left: 40%;
-    animation-delay: 10s;
-  }
-  .particle:nth-child(14) {
-    width: 12px;
-    height: 12px;
-    top: 30%;
-    left: 35%;
-    animation-delay: 12s;
-  }
-  .particle:nth-child(15) {
-    width: 7px;
-    height: 7px;
-    top: 80%;
-    left: 25%;
-    animation-delay: 14s;
-  }
-
-  @keyframes sparkleMove {
-    0% {
-      transform: translateY(0) translateX(0) scale(1);
-      opacity: 0.75;
-    }
-    50% {
-      transform: translateY(-15px) translateX(10px) scale(1.2);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(0) translateX(0) scale(1);
-      opacity: 0.75;
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .heart {
-      font-size: 8rem;
-    }
-    .hint {
-      font-size: 1.1rem;
-      margin-bottom: 25px;
-    }
-    .image-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-    .bottom-row-center {
+    body {
+      font-family: 'Prompt', sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #4a2c0a;
+      display: flex;
       flex-direction: column;
-      gap: 15px;
+      align-items: center;
+      padding: 2rem 1rem;
+      user-select: none;
     }
-    .bottom-row-center img {
-      width: 100%;
-      height: auto;
-      border-radius: 18px;
-    }
-    .marquee-wrapper {
-      padding: 10px 0;
-    }
-    .message-marquee {
-      font-size: 1.8rem;
-      padding-left: 80%;
-    }
-  }
 
-  @media (max-width: 480px) {
+    h1 {
+      font-family: 'Mali', cursive;
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 0.4em;
+      color: #5b2e00;
+      text-shadow: 2px 2px 8px rgba(255 215 0 / 0.8);
+    }
+
+    /* หัวใจใหญ่กลางจอ */
+    .heart-container {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 6px #f97316);
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+    .heart-container:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 12px #f97316);
+    }
+
     .heart {
-      font-size: 6.5rem;
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 100px;
+      height: 90px;
+      background: linear-gradient(145deg, #ff4e50, #f9d423);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow:
+        0 3px 7px rgba(255, 0, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.7);
+      transform: translate(-50%, -50%) rotate(-45deg);
+      animation: heartbeat 1.4s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px #ff4e50);
     }
-    .hint {
-      font-size: 1rem;
-      margin-bottom: 20px;
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 90px;
+      background: linear-gradient(145deg, #ff4e50, #f9d423);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow:
+        0 3px 7px rgba(255, 0, 0, 0.5),
+        inset 0 2px 5px rgba(255, 255, 255, 0.7);
+      filter: drop-shadow(0 0 10px #ff4e50);
     }
-    .image-grid {
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-bottom: 25px;
+    .heart::before {
+      top: -50px;
+      left: 0;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
     }
-    .message-marquee {
-      font-size: 1.4rem;
-      padding-left: 60%;
+    .heart::after {
+      top: 0;
+      left: 50px;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
     }
-  }
-</style>
+
+    @keyframes heartbeat {
+      0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.15); }
+    }
+
+    /* ชุดหัวใจเล็กฟุ้งเมื่อคลิก */
+    .heart-explode {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #ff6b6b, #c40000);
+      border-radius: 50%;
+      filter: drop-shadow(0 0 4px #ff6b6b);
+      animation: explode 1s forwards;
+      pointer-events: none;
+      z-index: 10;
+    }
+    @keyframes explode {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.2);
+      }
+    }
+
+    /* แคปชั่นใต้หัวใจ */
+    .caption {
+      font-family: 'Mali', cursive;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #d9480f;
+      text-shadow: 1px 1px 4px #ffa726aa;
+      margin-bottom: 3rem;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* แกลเลอรีรูปภาพ (carousel แบบเลื่อนซ้าย-ขวา) */
+    .gallery {
+      width: 100%;
+      max-width: 680px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      margin-bottom: 3rem;
+      background: #fff6e5;
+      position: relative;
+      user-select: none;
+    }
+
+    .gallery-track {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+    }
+    .gallery-slide {
+      min-width: 100%;
+      height: 100%;
+      user-select: none;
+      pointer-events: none;
+    }
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: inset 0 0 30px #f8b500aa;
+      transition: transform 0.5s ease;
+    }
+    .gallery-slide img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    /* ปุ่มเลื่อนซ้าย-ขวา */
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .gallery-button {
+      background: rgba(255 255 255 / 0.8);
+      border: none;
+      padding: 0.7rem 1.2rem;
+      font-size: 2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      pointer-events: auto;
+      color: #d9480f;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
+      user-drag: none;
+      user-select: none;
+    }
+    .gallery-button:hover {
+      background: #d9480f;
+      color: #fff;
+      box-shadow: 0 5px 15px #d9480fcc;
+    }
+
+    /* Instagram link */
+    .ig-link {
+      font-family: 'Prompt', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #d9480f;
+      text-decoration: none;
+      padding: 0.4rem 1rem;
+      border: 2px solid #d9480f;
+      border-radius: 25px;
+      box-shadow: 0 0 10px #f9731699;
+      transition: all 0.4s ease;
+      user-select: none;
+    }
+    .ig-link:hover {
+      background-color: #d9480f;
+      color: white;
+      box-shadow: 0 0 15px #f97316cc;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+      .heart-container {
+        width: 120px;
+        height: 120px;
+      }
+      .caption {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+      .gallery {
+        max-width: 100%;
+        aspect-ratio: 4 / 3;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<audio id="background-music" autoplay loop>
-  <source src="เพลงรัก.mp3" type="audio/mpeg" />
-  เบราว์เซอร์ของคุณไม่รองรับการเล่นไฟล์เสียง
-</audio>
 
-<div class="container">
-  <a
-    href="https://www.instagram.com/thewin_wonganan?igsh=NWszY2hvd2Z3bGxz"
-    target="_blank"
-    class="heart-link"
-    title="ไป Instagram พี่หวัน"
-  >
-    <div class="heart" aria-label="หัวใจสีแดง">❤️</div>
-  </a>
-  <div class="hint">ลองกดตรงรูปหัวใจดูสิครับ</div>
+  <h1>Thinking of You ❤️</h1>
 
-  <div class="image-grid" aria-label="รูปภาพพี่หวัน">
-    <img src="Tawan1.jpg" alt="ภาพที่ 1 ของพี่หวัน" />
-    <img src="Tawan2.jpg" alt="ภาพที่ 2 ของพี่หวัน" />
-    <img src="Tawan3.jpg" alt="ภาพที่ 3 ของพี่หวัน" />
-    <div class="bottom-row-center">
-      <img src="Tawan4.jpg" alt="ภาพที่ 4 ของพี่หวัน" />
-      <img src="Tawan5.jpg" alt="ภาพที่ 5 ของพี่หวัน" />
+  <div class="heart-container" id="heart">
+    <div class="heart"></div>
+  </div>
+  <div class="caption">กดหัวใจดูสิ... จะมีอะไรพิเศษรอคุณอยู่</div>
+
+  <!-- แกลเลอรีรูปภาพ -->
+  <div class="gallery" aria-label="Gallery of photos">
+    <div class="gallery-track" id="galleryTrack">
+      <div class="gallery-slide"><img src="Tawan1.jpg" alt="Tawan Picture 1" /></div>
+      <div class="gallery-slide"><img src="Tawan2.jpg" alt="Tawan Picture 2" /></div>
+      <div class="gallery-slide"><img src="Tawan3.jpg" alt="Tawan Picture 3" /></div>
+      <div class="gallery-slide"><img src="Tawan4.jpg" alt="Tawan Picture 4" /></div>
+      <div class="gallery-slide"><img src="Tawan5.jpg" alt="Tawan Picture 5" /></div>
+    </div>
+    <div class="gallery-nav">
+      <button aria-label="Previous image" class="gallery-button" id="prevBtn">&#10094;</button>
+      <button aria-label="Next image" class="gallery-button" id="nextBtn">&#10095;</button>
     </div>
   </div>
 
-  <div class="marquee-wrapper" aria-label="ข้อความวิ่ง">
-    <div class="message-marquee" aria-live="polite" aria-atomic="true">
-      Thinking of you, P'Tawan.
-    </div>
-  </div>
-</div>
+  <!-- Instagram Link -->
+  <a href="https://www.instagram.com/tawan.lnx" target="_blank" rel="noopener noreferrer" class="ig-link" aria-label="Instagram Tawan">Instagram @tawan.lnx</a>
 
-<!-- Particles -->
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
+  <!-- เพลงพื้นหลัง -->
+  <audio src="เพลงรัก.mp3" autoplay loop controls style="margin-top:2rem; filter: drop-shadow(0 0 5px #d9480f); border-radius:8px; width: 240px;">
+    Your browser does not support the audio element.
+  </audio>
 
-<script>
-  // เปิดเพลงถ้าโดนบล็อก autoplay จะเปิดเมื่อคลิกจอครั้งแรก
-  document.addEventListener('DOMContentLoaded', () => {
-    const music = document.getElementById('background-music');
-    music.play().catch(() => {
-      document.body.addEventListener('click', () => music.play(), { once: true });
+  <script>
+    // เอฟเฟกต์หัวใจฟุ้งเมื่อคลิก
+    const heart = document.getElementById('heart');
+
+    heart.addEventListener('click', e => {
+      for (let i = 0; i < 15; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('heart-explode');
+        // กระจายทิศทางแบบสุ่ม
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 100 + Math.random() * 60;
+        sparkle.style.setProperty('--x', `${Math.cos(angle) * radius}px`);
+        sparkle.style.setProperty('--y', `${Math.sin(angle) * radius}px`);
+        // ตำแหน่งเริ่มต้นตรงกลางหัวใจ
+        sparkle.style.left = `${heart.offsetWidth / 2}px`;
+        sparkle.style.top = `${heart.offsetHeight / 2}px`;
+        heart.appendChild(sparkle);
+
+        sparkle.addEventListener('animationend', () => {
+          sparkle.remove();
+        });
+      }
     });
-  });
-</script>
+
+    // Carousel รูปภาพ
+    const galleryTrack = document.getElementById('galleryTrack');
+    const slides = galleryTrack.children;
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateCarousel() {
+      galleryTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    });
+
+    // ออโต้เล่นรูปทุก 5 วินาที
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    }, 5000);
+  </script>
+
 </body>
 </html>
