@@ -34,7 +34,8 @@
 
       body {
         display: flex;
-        justify-content: center;
+        flex-direction: column; /* **ปรับตรงนี้: ให้ body เป็น column เพื่อวาง content และ footer** */
+        justify-content: space-between; /* **ปรับตรงนี้: กระจายเนื้อหาหลักกับ footer** */
         align-items: center;
         min-height: 100vh;
         margin: 0;
@@ -45,13 +46,13 @@
         );
         font-family: var(--font-prompt);
         color: var(--text-color-light);
-        overflow: hidden; /* Hide main scrollbar */
+        overflow: hidden;
         position: relative;
         animation: backgroundShift var(--animation-duration-bg) ease-in-out
           infinite alternate;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        perspective: 1000px; /* For parallax */
+        perspective: 1000px;
       }
 
       @keyframes backgroundShift {
@@ -82,17 +83,18 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around; /* **ปรับตรงนี้: กระจายเนื้อหาในแนวตั้ง** */
-        flex-grow: 1; /* **เพิ่มตรงนี้: ให้คอนเทนเนอร์ใช้พื้นที่ความสูงที่เหลือทั้งหมด** */
+        justify-content: space-around;
+        flex-grow: 1;
         z-index: 10;
-        padding: 2.5rem 1.5rem; /* ลด padding ลงเล็กน้อย */
+        padding: 2.5rem 1.5rem;
         box-sizing: border-box;
         max-width: 90vw;
         width: 100%;
-        min-height: auto; /* **ปรับตรงนี้: ไม่จำกัดความสูงขั้นต่ำตายตัว** */
-        height: 100vh; /* **เพิ่ม: ให้คอนเทนเนอร์หลักสูงเต็มจอ** */
+        min-height: auto;
+        height: 100%; /* **ปรับตรงนี้: ให้ main-container ใช้ความสูงที่เหลือจาก body ทั้งหมด** */
         position: relative;
         text-align: center;
+        /* margin-bottom: 20px; **ลบออก: เพราะใช้ justify-content: space-between ใน body แล้ว** */
       }
 
       /* Crystal Heart */
@@ -107,7 +109,7 @@
       }
 
       .heart {
-        font-size: clamp(6em, 15vw, 10em); /* **ปรับตรงนี้: ขนาดหัวใจ responsive มากขึ้น** */
+        font-size: clamp(6em, 15vw, 10em);
         color: var(--heart-color);
         animation: pulseGlow var(--animation-duration-heart) ease-in-out infinite;
         text-shadow: 0 0 15px var(--heart-glow-1), 0 0 30px var(--heart-glow-2),
@@ -271,7 +273,7 @@
       /* Floating Message */
       .floating-message {
         font-family: var(--font-parisienne);
-        font-size: clamp(1.5em, 5vw, 3.5em); /* **ปรับตรงนี้: ขนาดข้อความ responsive มากขึ้น** */
+        font-size: clamp(1.5em, 5vw, 3.5em);
         font-weight: 700;
         color: var(--text-color-light);
         margin-top: 2.5rem;
@@ -283,7 +285,7 @@
         box-sizing: border-box;
         user-select: none;
         z-index: 10;
-        height: 1.5em; /* **เพิ่ม: กำหนดความสูงเพื่อให้ข้อความมีพื้นที่แสดงผล** */
+        height: 1.5em;
       }
 
       .floating-message span {
@@ -339,15 +341,29 @@
         100% { transform: translate(var(--end-x), var(--end-y)); }
       }
 
+      /* Footer Text */
+      .footer-text {
+        font-family: var(--font-mali);
+        font-size: clamp(0.7rem, 2vw, 0.9rem); /* **ปรับขนาดตามจอ** */
+        color: rgba(255, 255, 255, 0.7); /* สีข้อความจางลงเล็กน้อย */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        margin-top: 1rem; /* ระยะห่างจากข้อความด้านบน */
+        margin-bottom: 1rem; /* ระยะห่างจากขอบล่าง */
+        line-height: 1.5; /* ระยะห่างระหว่างบรรทัด */
+        z-index: 10;
+        user-select: none;
+      }
+
       /* ------------------------------------- */
       /* Responsive Adjustments for Mobile & Tablets */
       /* ------------------------------------- */
       @media (max-width: 1024px) {
         .main-container {
-          padding: 2rem 1.5rem; /* ปรับ padding ให้เหมาะสมกับแท็บเล็ต */
+          padding: 2rem 1.5rem;
         }
         .heart {
-          font-size: clamp(5em, 10vw, 8em); /* ปรับขนาดหัวใจสำหรับแท็บเล็ต */
+          font-size: clamp(5em, 10vw, 8em);
         }
         .heart-hint {
           font-size: 1rem;
@@ -360,26 +376,33 @@
           font-size: 1.1rem;
         }
         .floating-message {
-          font-size: clamp(1.2em, 4vw, 2.8em); /* ปรับขนาดข้อความสำหรับแท็บเล็ต */
+          font-size: clamp(1.2em, 4vw, 2.8em);
+        }
+        .footer-text {
+            font-size: clamp(0.6rem, 1.8vw, 0.8rem);
+            margin-top: 0.8rem;
+            margin-bottom: 0.8rem;
         }
       }
 
       @media (max-width: 768px) {
         body {
-          align-items: flex-start;
+          align-items: center; /* **ปรับกลับเป็น center** */
           padding: 1.5rem 0;
           overflow-y: auto;
           overflow-x: hidden;
-          min-height: 100vh; /* ยังคง 100vh ไว้ให้มือถือเผื่อเนื้อหาน้อย */
+          min-height: 100vh;
+          justify-content: space-between; /* **ยังคงกระจายเนื้อหาหลักกับ footer** */
         }
         .main-container {
           padding: 1.5rem 1rem;
-          min-height: auto; /* มือถือให้ปรับความสูงตามเนื้อหา */
+          min-height: auto;
           max-width: 95vw;
-          height: auto; /* ปรับ auto เพื่อไม่ให้บีบเนื้อหาเกินไปบนมือถือ */
+          height: auto; /* Allow auto height for mobile to scroll */
+          flex-grow: 0; /* **มือถือไม่ต้องขยายเต็มพื้นที่** */
         }
         .heart {
-          font-size: clamp(4em, 8vw, 6em); /* เล็กกว่าเดิมสำหรับมือถือ */
+          font-size: clamp(4em, 8vw, 6em);
         }
         .heart-link:hover .heart,
         .heart-link:active .heart {
@@ -401,8 +424,13 @@
           margin-top: 0.8rem;
         }
         .floating-message {
-          font-size: clamp(1em, 3vw, 2em); /* เล็กสุดสำหรับมือถือจอแคบ */
+          font-size: clamp(1em, 3vw, 2em);
           margin-top: 1.5rem;
+        }
+        .footer-text {
+            font-size: clamp(0.55rem, 1.6vw, 0.7rem);
+            margin-top: 0.7rem;
+            margin-bottom: 0.7rem;
         }
         .particle {
             width: var(--particle-size-min);
@@ -435,6 +463,11 @@
           font-size: clamp(0.8em, 2.5vw, 1.5em);
           margin-top: 1rem;
         }
+        .footer-text {
+            font-size: clamp(0.5rem, 1.5vw, 0.65rem);
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
       }
     </style>
   </head>
@@ -464,6 +497,11 @@
 
       </div>
 
+    <div class="footer-text">
+      <p>Copyright by thewin wonganann</p>
+      <p>ขอบคุณที่ผ่านเข้ามาในชีวิต ให้ผมรู้จักคำว่ารักเป็นนะครับ</p>
+    </div>
+
     <script>
       // Background Music Autoplay
       document.addEventListener('DOMContentLoaded', function () {
@@ -485,18 +523,12 @@
       // Photo Gallery Slideshow Logic
       (function () {
         const slidesData = [
-          { src: 'Tawan1.jpg', alt: 'Tawan 1', caption: 'ยิ้มสดใสในวันแรก' },
-          { src: 'Tawan2.jpg', alt: 'Tawan 2', caption: 'มุมเผลอ ๆ ที่น่ารัก' },
-          { src: 'Tawan3.jpg', alt: 'Tawan 3', caption: 'บรรยากาศสบายๆ' },
-          { src: 'Tawan4.jpg', alt: 'Tawan 4', caption: 'ความสุขเล็กๆ น้อยๆ ของเรา' },
-          { src: 'Tawan5.jpg', alt: 'Tawan 5', caption: 'หล่อเท่ในทุกมุมเสมอ' },
-          { src: 'Tawan6.jpg', alt: 'Tawan 6', caption: 'คิดถึงนะค้าบบ' },
-          { src: 'Tawan7.jpg', alt: 'Tawan 7', caption: 'แค่เห็นก็ใจละลายแล้ว' },
-          { src: 'Tawan8.jpg', alt: 'Tawan 8', caption: 'ความทรงจำดีๆ ที่เรามีร่วมกัน' },
-          { src: 'Tawan9.jpg', alt: 'Tawan 9', caption: 'เสน่ห์ที่ไม่เหมือนใครของพี่' },
-          { src: 'Tawan10.jpg', alt: 'Tawan 10', caption: 'อยากเจอทุกวันเลย' },
-          { src: 'Tawan11.jpg', alt: 'Tawan 11', caption: 'รอยยิ้มนี้ทำให้โลกสดใส' },
-          { src: 'Tawan12.jpg', alt: 'Tawan 12', caption: 'รักพี่ตะวันที่สุด' },
+          { src: 'Tawan1.jpg', alt: 'Tawan 1', caption: 'ขอบคุณที่ช่วยถือเป๋าในวันนั้น' },
+          { src: 'Tawan2.jpg', alt: 'Tawan 2', caption: 'ขอบคุณที่ไม่เคยปฎิเสธ' },
+          { src: 'Tawan3.jpg', alt: 'Tawan 3', caption: 'ขอบคุณที่พยายามรักษาน้ำใจ' },
+          { src: 'Tawan4.jpg', alt: 'Tawan 4', caption: 'ขอโทษที่ทำให้คิดมาก' },
+          { src: 'Tawan5.jpg', alt: 'Tawan 5', caption: 'ขอโทษที่ทำให้ลำบากใจ' },
+          
           // Add more images and captions here!
         ];
 
