@@ -13,12 +13,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
+        min-height: 100vh; /* เดิม */
         margin: 0;
         background: linear-gradient(135deg, #ff9999, #ff66cc);
         font-family: 'Prompt', sans-serif;
         color: #fff;
-        overflow: hidden;
+        overflow: hidden; /* เดิม */
         position: relative;
         animation: backgroundShift 20s ease-in-out infinite alternate;
       }
@@ -40,11 +40,13 @@
         align-items: center;
         justify-content: center;
         z-index: 10;
-        padding: 30px;
+        padding: 30px; /* เดิม */
         box-sizing: border-box;
-        max-width: 95%;
-        min-height: 80vh;
+        max-width: 95%; /* เดิม */
+        min-height: 80vh; /* เดิม */
         position: relative;
+        /* เพิ่ม: ทำให้เนื้อหาบีบตัวได้ถ้าจำเป็น */
+        flex-shrink: 0;
       }
 
       /* ลิงก์หัวใจ */
@@ -60,7 +62,7 @@
 
       /* หัวใจหลัก */
       .heart {
-        font-size: 10em;
+        font-size: 10em; /* เดิม */
         color: #ff2a68;
         animation: pulseGlow 1.5s ease-in-out infinite;
         text-shadow: 0 0 8px #ff2a68, 0 0 20px #ff5a8f, 0 0 40px #ff2a68,
@@ -156,7 +158,7 @@
       /* ข้อความใต้หัวใจ */
       .heart-hint {
         font-family: 'Mali', cursive;
-        font-size: 1em;
+        font-size: 1em; /* เดิม */
         font-weight: 600;
         color: #fff;
         margin-top: 4px;
@@ -169,30 +171,30 @@
       /* Slideshow Container */
       .image-slideshow {
         position: relative;
-        width: 100%; /* หรือกำหนดขนาดตามที่ต้องการ */
-        max-width: 600px; /* ขนาดสูงสุดของสไลด์ */
-        height: 400px; /* ความสูงของสไลด์ */
-        margin-top: 40px;
+        width: 100%; /* เดิม */
+        max-width: 600px; /* เดิม */
+        height: 400px; /* เดิม */
+        margin-top: 40px; /* เดิม */
         border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         background-color: rgba(255, 255, 255, 0.1);
-        display: flex; /* ใช้ flexbox เพื่อจัดตำแหน่งรูป */
+        display: flex;
         justify-content: center;
         align-items: center;
       }
 
       /* แต่ละสไลด์ */
       .mySlides {
-        display: none; /* ซ่อนทุกสไลด์เริ่มต้น */
+        display: none;
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        opacity: 0; /* เริ่มต้นด้วยความโปร่งใส 0 */
-        transition: opacity 1.5s ease-in-out; /* เพิ่ม transition สำหรับ fade effect */
-        display: flex; /* ใช้ flexbox เพื่อจัดตำแหน่งรูปและข้อความในสไลด์ */
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -200,9 +202,9 @@
 
       /* รูปภาพภายในสไลด์ */
       .mySlides img {
-        width: 90%; /* ขนาดของรูปภาพในสไลด์ */
+        width: 90%;
         max-height: 80%;
-        object-fit: contain; /* ให้รูปภาพพอดีโดยไม่ครอป */
+        object-fit: contain;
         border-radius: 15px;
         border: 4px solid rgba(255, 255, 255, 0.8);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
@@ -211,27 +213,27 @@
       /* ข้อความใต้รูปภาพในสไลด์ (ถ้ามี) */
       .slide-text {
         font-family: 'Mali', cursive;
-        font-size: 1.5em;
+        font-size: 1.5em; /* เดิม */
         font-weight: 600;
         color: #fff;
-        margin-top: 15px;
+        margin-top: 15px; /* เดิม */
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         text-align: center;
       }
 
       /* แสดงสไลด์ปัจจุบัน */
       .mySlides.active {
-        display: flex; /* แสดงสไลด์ที่ active */
-        opacity: 1; /* ทำให้มองเห็น */
+        display: flex;
+        opacity: 1;
       }
 
       /* ข้อความวิ่ง */
       .message-marquee {
         font-family: 'Mali', cursive;
-        font-size: 2.5em;
+        font-size: 2.5em; /* เดิม */
         font-weight: 700;
         color: #fff;
-        margin-top: 20px;
+        margin-top: 20px; /* เดิม */
         text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
         white-space: nowrap;
         overflow: hidden;
@@ -256,7 +258,7 @@
         }
       }
 
-      /* Particle effects */
+      /* Particle effects (คงเดิม) */
       .particle {
         position: absolute;
         width: 8px;
@@ -289,7 +291,7 @@
         }
       }
 
-      /* ตำแหน่ง particle (เหมือนเดิม) */
+      /* ตำแหน่ง particle (คงเดิม) */
       .particle:nth-child(1) {
         top: 10%;
         left: 15%;
@@ -395,6 +397,101 @@
         width: 8px;
         height: 8px;
       }
+
+      /* ------------------------------------- */
+      /* Responsive Adjustments for Mobile */
+      /* ------------------------------------- */
+      @media (max-width: 768px) {
+        body {
+          /* อนุญาตให้เลื่อนได้ในแนวตั้ง หากเนื้อหาเกินหน้าจอ */
+          overflow-y: auto;
+          overflow-x: hidden; /* ซ่อน scrollbar แนวนอน */
+          align-items: flex-start; /* จัดให้เนื้อหาอยู่ด้านบนสุด เพื่อเห็นทั้งหมด */
+          padding: 20px 0; /* เพิ่ม padding ด้านบน/ล่าง */
+          min-height: auto; /* ลบ min-height เพื่อให้เนื้อหาไหลได้ */
+        }
+
+        .heart-container {
+          padding: 20px 10px; /* ลด padding รอบคอนเทนเนอร์ */
+          min-height: auto; /* อนุญาตให้ความสูงปรับตามเนื้อหา */
+          max-width: 98%; /* ใช้พื้นที่หน้าจอมากขึ้น */
+        }
+
+        .heart {
+          font-size: 6em; /* ลดขนาดหัวใจให้เล็กลงสำหรับมือถือ */
+        }
+
+        .heart::before {
+          top: -10%;
+          left: -10%;
+          width: 120%;
+          height: 120%;
+        }
+
+        .heart-link:hover .heart,
+        .heart-link:active .heart {
+          transform: scale(1.1) rotate(-5deg); /* ปรับขนาดตอน hover/active ให้เล็กลง */
+          text-shadow: 0 0 15px #ff2a68, 0 0 30px #ff5a8f, 0 0 45px #ff2a68,
+            0 0 80px #ff5a8f;
+        }
+
+        .heart-hint {
+          font-size: 0.85em; /* ลดขนาด font ของข้อความใต้หัวใจ */
+          margin-top: 2px;
+        }
+
+        .image-slideshow {
+          max-width: 90vw; /* ใช้ความกว้างของ viewport เป็นหลัก */
+          height: 60vw; /* ใช้ความกว้างของ viewport กำหนดความสูง เพื่อรักษาสัดส่วน */
+          margin-top: 20px; /* ลด margin-top */
+          border-radius: 15px;
+        }
+
+        .mySlides img {
+          width: 95%; /* ขยายรูปให้ใหญ่ขึ้นเล็กน้อย */
+          max-height: 75%;
+          border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .slide-text {
+          font-size: 1em; /* ลดขนาด font ของข้อความสไลด์ */
+          margin-top: 10px;
+        }
+
+        .message-marquee {
+          font-size: 1.5em; /* ลดขนาด font ของข้อความวิ่งอย่างมาก */
+          margin-top: 15px;
+        }
+
+        /* ซ่อน particle บางตัวในมือถือเพื่อให้ดูสะอาดตาขึ้น (ทางเลือก) */
+        .particle:nth-child(odd) {
+          display: none;
+        }
+        /* หรือปรับขนาดและจำนวน particle ให้เล็กลง */
+        .particle {
+            width: 5px;
+            height: 5px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* สำหรับมือถือขนาดเล็กเป็นพิเศษ */
+        .heart {
+          font-size: 5em;
+        }
+        .heart-hint {
+          font-size: 0.8em;
+        }
+        .image-slideshow {
+          height: 70vw; /* เพิ่มความสูงเล็กน้อยสำหรับมือถือที่แคบมาก */
+        }
+        .slide-text {
+          font-size: 0.9em;
+        }
+        .message-marquee {
+          font-size: 1.2em;
+        }
+      }
     </style>
   </head>
   <body>
@@ -458,14 +555,11 @@
       (function () {
         const slidesData = [
           { src: 'Tawan1.jpg', alt: 'Tawan 1', text: 'ยิ้มสดใสในวันแรก' },
-          { src: 'Tawan2.jpg', alt: 'Tawan 2', text: 'มุมเท่ๆ ที่ดูดี' },
+          { src: 'Tawan2.jpg', alt: 'Tawan 2', text: 'มุมเผล ๆ ที่น่ารัก' },
           { src: 'Tawan3.jpg', alt: 'Tawan 3', text: 'บรรยากาศสบายๆ' },
           { src: 'Tawan4.jpg', alt: 'Tawan 4', text: 'ความสุขเล็กๆ' },
           { src: 'Tawan5.jpg', alt: 'Tawan 5', text: 'หล่อเท่ในทุกมุม' },
-          { src: 'Tawan6.jpg', alt: 'Tawan 6', text: 'คิดถึงนะค้าบบ' },
-          { src: 'Tawan7.jpg', alt: 'Tawan 7', text: 'แค่เห็นก็ใจละลาย' },
-          { src: 'Tawan8.jpg', alt: 'Tawan 8', text: 'ความทรงจำดีๆ' },
-          { src: 'Tawan9.jpg', alt: 'Tawan 9', text: 'เสน่ห์ที่ไม่เหมือนใคร' },
+          
           // สามารถเพิ่มรูปภาพและข้อความได้อีกตามต้องการ
         ];
 
@@ -475,9 +569,9 @@
         // สร้างสไลด์จากข้อมูลใน slidesData
         slidesData.forEach((data, index) => {
           const slideDiv = document.createElement('div');
-          slideDiv.classList.add('mySlides', 'fade'); // เพิ่มคลาส fade สำหรับ transition
+          slideDiv.classList.add('mySlides', 'fade');
           if (index === 0) {
-            slideDiv.classList.add('active'); // ตั้งค่าสไลด์แรกให้ active
+            slideDiv.classList.add('active');
           }
 
           const img = document.createElement('img');
@@ -497,28 +591,22 @@
         const slides = document.querySelectorAll('.mySlides');
 
         function showSlides() {
-          // ซ่อนสไลด์ปัจจุบัน
           slides[slideIndex].classList.remove('active');
 
-          // ไปยังสไลด์ถัดไป
           slideIndex++;
           if (slideIndex > slides.length - 1) {
-            slideIndex = 0; // วนกลับไปสไลด์แรกเมื่อถึงสไลด์สุดท้าย
+            slideIndex = 0;
           }
 
-          // แสดงสไลด์ถัดไป
           slides[slideIndex].classList.add('active');
 
-          // เรียกฟังก์ชันนี้ซ้ำหลังจาก 4 วินาที (รวมเวลา fade)
           setTimeout(showSlides, 4000);
         }
 
         // เริ่มต้นการแสดงสไลด์หลังจากโหลดหน้าเว็บ
-        // ให้รอโหลดรูปภาพทั้งหมดก่อนเริ่มสไลด์จริง
         window.onload = function() {
-            setTimeout(showSlides, 4000); // เริ่มสไลด์แรกหลังจาก 4 วินาที
+            setTimeout(showSlides, 4000);
         };
-
       })();
     </script>
   </body>
